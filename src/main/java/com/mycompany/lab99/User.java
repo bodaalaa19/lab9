@@ -194,6 +194,8 @@ public static int signUp(User newUser) {
         newUser.setStatus("online");
         users.add(newUser);  // Add the new user
         saveUsers(users);     // Save the updated list of users
+                              JOptionPane.showMessageDialog(null,"account created succsesfully","message",JOptionPane.NO_OPTION);
+
     }
 
     return flag;  // Return the flag indicating success (1) or failure (0)
