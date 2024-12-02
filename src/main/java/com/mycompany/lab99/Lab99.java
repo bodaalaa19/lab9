@@ -4,10 +4,14 @@
 
 package com.mycompany.lab99;
 
+import static com.mycompany.lab99.User.loadUsers;
+import static com.mycompany.lab99.User.saveUsers;
+import static com.mycompany.lab99.User.signUp;
 import java.security.NoSuchAlgorithmException;
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
 
 /**
@@ -17,15 +21,7 @@ import java.util.Date;
 public class Lab99 {
 
     public static void main(String[] args) throws ParseException, NoSuchAlgorithmException {
-       
-        User user = new User(
-            "1",
-            "example@example.com",
-            "exampleUser",
-            "securePassword123",
-            "2000-01-01",
-            "Online"
-        );
-        System.out.println(user);
-    }
-}
+          
+         
+    
+}}
