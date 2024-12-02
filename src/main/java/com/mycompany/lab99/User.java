@@ -4,13 +4,20 @@
  */
 package com.mycompany.lab99;
 
+import java.io.FileReader;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Base64;
 import java.util.Date;
+import java.util.Scanner;
+import org.json.JSONArray;
+import org.json.JSONObject;
 
 /**
  *
@@ -28,13 +35,13 @@ public class User {
     private static final DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
 
     // Constructor
-    public User(String userId, String email, String username, String password, String dateOfBirth, String status) throws NoSuchAlgorithmException, ParseException {
+    public User(String userId, String email, String username, String password, String dateOfBirth) throws NoSuchAlgorithmException, ParseException {
         this.userId = userId;
         this.email = email;
         this.username = username;
         this.hashedPassword = hashPassword(password); // Hash the password
         this.dateOfBirth = dateFormat.parse(dateOfBirth); // Parse the date
-        this.status = status;
+        this.status = "offline";
     }
 
     // Getters and Setters
@@ -108,7 +115,91 @@ public class User {
         byte[] hashedBytes = md.digest(password.getBytes());
         return Base64.getEncoder().encodeToString(hashedBytes);
     }
+    public static Void saveUsers(ArrayList<User> list){
+        JSONArray userArray=new JSONArray();
+        for(User user : list){
+           JSONObject j=new JSONObject();
+            j.put("userId",user.getUserId());
+            j.put("email",user.getEmail());
+             j.put("userName",user.getUsername());
+            j.put("hashedPassword",user.getHashedPassword());
+            j.put("dateOfBirth",user.getFormattedDateOfBirth());
+            j.put("Status",user.getStatus());
+        userArray.put(j);
+
+        }
+           try (FileWriter file = new FileWriter("users.json")) {
+            file.write(userArray.toString(4)); //  print with an indentation of 4 spaces
+            file.flush();
+            System.out.println("Users successfully saved to users.json!");
+        } catch (IOException e) {
+            System.err.println("Error writing to file: " + e.getMessage());
+        }
+        return null;
+    }
+   public static ArrayList<User> loadUsers() {
+        ArrayList<User> userList = new ArrayList<>();
+        try (FileReader reader = new FileReader("users.json")) {
+            // Read the content of the file
+            Scanner scanner = new Scanner(reader);
+            StringBuilder jsonContent = new StringBuilder();
+
+            while (scanner.hasNextLine()) {
+                jsonContent.append(scanner.nextLine());
+            }
+
+            JSONArray userArray = new JSONArray(jsonContent.toString());
+
+            // Iterate through the JSONArray and create User objects
+            for (int i = 0; i < userArray.length(); i++) {
+                JSONObject userJson = userArray.getJSONObject(i);
+                String userId = userJson.getString("userId");
+                String email = userJson.getString("email");
+                String username = userJson.getString("userName");
+                String hashedPassword = userJson.getString("hashedPassword");
+                String dateOfBirth = userJson.getString("dateOfBirth");
+                String status = userJson.getString("Status");
+
+                // Create a User object and add it to the list
+                User user = new User(userId, email, username, hashedPassword, dateOfBirth);
+                userList.add(user);
+            }
+
+            System.out.println("Users successfully loaded from users.json!");
+
+        } catch (IOException e) {
+            System.err.println("Error reading the file: " + e.getMessage());
+        } catch (Exception e) {
+            System.err.println("Error parsing the JSON or creating User objects: " + e.getMessage());
+        }
+
+        return userList;
+    }
+public static int signUp(User newUser) {
+    ArrayList<User> users = loadUsers();
+    int flag = 1;  // Default to 1 (indicating success, user can be added)
+
+    // Check if the userId or username already exists
+    for (User u : users) {
+        if (newUser.getUserId().equals(u.getUserId()) || newUser.getUsername().equals(u.getUsername())) {
+            flag = 0;  
+            break;  // Exit the loop immediately after finding a duplicate
+        }
+    }
+
+    // If no duplicate was found, add the new user and save
+    if (flag == 1) {
+        newUser.setStatus("online");
+        users.add(newUser);  // Add the new user
+        saveUsers(users);     // Save the updated list of users
+    }
+
+    return flag;  // Return the flag indicating success (1) or failure (0)
 }
+
+        
+    }
+
     
 
 
