@@ -16,6 +16,7 @@ import java.util.ArrayList;
 import java.util.Base64;
 import java.util.Date;
 import java.util.Scanner;
+import javax.swing.JOptionPane;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
@@ -182,7 +183,8 @@ public static int signUp(User newUser) {
     // Check if the userId or username already exists
     for (User u : users) {
         if (newUser.getUserId().equals(u.getUserId()) || newUser.getUsername().equals(u.getUsername())) {
-            flag = 0;  
+            flag = 0;
+                      JOptionPane.showMessageDialog(null,"The id or username alreade exists","message",JOptionPane.ERROR_MESSAGE);
             break;  // Exit the loop immediately after finding a duplicate
         }
     }
