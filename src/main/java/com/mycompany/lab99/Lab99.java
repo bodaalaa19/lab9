@@ -17,19 +17,15 @@ import java.util.Date;
 public class Lab99 {
 
     public static void main(String[] args) throws ParseException, NoSuchAlgorithmException {
-      DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
-
-        // Constructing a new user
-        String userId = "3"; // Unique identifier
-        String email = "user3@example.com";
-        String username = "UserThree";
-        String hashedPassword = "112"; 
-        Date dateOfBirth = dateFormat.parse("2002-03-03");
-        String status = "Online";
-
-        // Creating the user object
-        User newUser = new User(userId, email, username, hashedPassword, dateOfBirth, status);
-        System.out.println(newUser.toString());
-
+       
+        User user = new User(
+            "1",
+            "example@example.com",
+            "exampleUser",
+            "securePassword123",
+            "2000-01-01",
+            "Online"
+        );
+        System.out.println(user);
     }
 }

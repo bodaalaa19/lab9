@@ -17,23 +17,23 @@ import java.util.Date;
  * @author al-aqsa
  */
 public class User {
-        private String userId;
+    private String userId;
     private String email;
     private String username;
     private String hashedPassword;
-    private Date dateOfBirth; 
-    private String status; 
+    private Date dateOfBirth;
+    private String status;
 
     // Date formatter
-    private static final DateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
+    private static final DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
 
     // Constructor
-    public User(String userId, String email, String username, String hashedPassword, Date dateOfBirth, String status) throws NoSuchAlgorithmException {
+    public User(String userId, String email, String username, String password, String dateOfBirth, String status) throws NoSuchAlgorithmException, ParseException {
         this.userId = userId;
         this.email = email;
         this.username = username;
-        this.hashedPassword = hashPassword(hashedPassword);
-        this.dateOfBirth = dateOfBirth;
+        this.hashedPassword = hashPassword(password); // Hash the password
+        this.dateOfBirth = dateFormat.parse(dateOfBirth); // Parse the date
         this.status = status;
     }
 
@@ -62,8 +62,8 @@ public class User {
         return hashedPassword;
     }
 
-    public void setHashedPassword(String hashedPassword) throws NoSuchAlgorithmException {
-        this.hashedPassword = hashPassword(hashedPassword);
+    public void setHashedPassword(String password) throws NoSuchAlgorithmException {
+        this.hashedPassword = hashPassword(password); // Hash the password
     }
 
     public Date getDateOfBirth() {
@@ -75,11 +75,11 @@ public class User {
     }
 
     public void setDateOfBirth(String dateOfBirth) throws ParseException {
-        this.dateOfBirth = formatter.parse(dateOfBirth);
+        this.dateOfBirth = dateFormat.parse(dateOfBirth);
     }
 
     public String getFormattedDateOfBirth() {
-        return formatter.format(dateOfBirth);
+        return dateFormat.format(dateOfBirth);
     }
 
     public String getStatus() {
@@ -89,21 +89,26 @@ public class User {
     public void setStatus(String status) {
         this.status = status;
     }
-       public String toString() {
+
+    @Override
+    public String toString() {
         return "User{" +
                 "userId='" + userId + '\'' +
                 ", email='" + email + '\'' +
                 ", username='" + username + '\'' +
-                ",password= "+hashedPassword+
+                ", hashedPassword='" + hashedPassword + '\'' +
                 ", dateOfBirth='" + getFormattedDateOfBirth() + '\'' +
                 ", status='" + status + '\'' +
                 '}';
     }
-   public static String hashPassword(String password) throws NoSuchAlgorithmException {
-       MessageDigest md=MessageDigest.getInstance("SHA-256");
-       byte[]hashedBytes=md.digest(password.getBytes());
-       return Base64.getEncoder().encodeToString(hashedBytes);
-   }
-    
+
+    // Static method to hash passwords
+    public static String hashPassword(String password) throws NoSuchAlgorithmException {
+        MessageDigest md = MessageDigest.getInstance("SHA-256");
+        byte[] hashedBytes = md.digest(password.getBytes());
+        return Base64.getEncoder().encodeToString(hashedBytes);
+    }
 }
+    
+
 
