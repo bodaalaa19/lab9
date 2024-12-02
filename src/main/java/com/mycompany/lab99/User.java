@@ -11,6 +11,7 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Base64;
 import java.util.Date;
+import java.util.List;
 
 /**
  *
@@ -23,6 +24,10 @@ public class User {
     private String hashedPassword;
     private Date dateOfBirth;
     private String status;
+    private Profile profile;
+    private List<User> friends;
+    private List<Post> posts;
+    private List<Story> stories;
 
     // Date formatter
     private static final DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
@@ -108,6 +113,44 @@ public class User {
         byte[] hashedBytes = md.digest(password.getBytes());
         return Base64.getEncoder().encodeToString(hashedBytes);
     }
+
+    public Profile getProfile() {
+        return profile;
+    }
+
+    public List<User> getFriends() {
+        return friends;
+    }
+
+    public List<Post> getPosts() {
+        return posts;
+    }
+
+    public List<Story> getStories() {
+        return stories;
+    }
+
+    public void setUserId(String userId) {
+        this.userId = userId;
+    }
+
+    public void setProfile(Profile profile) {
+        this.profile = profile;
+    }
+
+    public void setFriends(List<User> friends) {
+        this.friends = friends;
+    }
+
+    public void setPosts(List<Post> posts) {
+        this.posts = posts;
+    }
+
+    public void setStories(List<Story> stories) {
+        this.stories = stories;
+    }
+    
+    
 }
     
 
