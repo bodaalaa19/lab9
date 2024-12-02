@@ -73,6 +73,9 @@ public class MainScreen extends javax.swing.JFrame {
 
     private void LoginAction(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_LoginAction
         // TODO add your handling code here:
+        LoginScreen loginScreen=new LoginScreen();
+        this.setVisible(false);
+        loginScreen.setVisible(true);
         
     }//GEN-LAST:event_LoginAction
 
