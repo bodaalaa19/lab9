@@ -44,6 +44,8 @@ public class ProfilePage extends javax.swing.JFrame {
         setBio();
                 DefaultListModel<String> listModel = new DefaultListModel<>();
                             listModel.addElement("alo");
+                                                        listModel.addElement("alo");
+
                             myPostsList.setModel(listModel);
                             
 
