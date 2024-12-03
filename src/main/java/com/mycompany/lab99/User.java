@@ -16,6 +16,7 @@ import java.util.ArrayList;
 import java.util.Base64;
 import java.util.Date;
 import java.util.Scanner;
+import javax.swing.JOptionPane;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
@@ -30,6 +31,7 @@ public class User {
     private String hashedPassword;
     private Date dateOfBirth;
     private String status;
+    private String pass;
 
     // Date formatter
     private static final DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
@@ -39,6 +41,7 @@ public class User {
         this.userId = userId;
         this.email = email;
         this.username = username;
+        this.pass=password;
         this.hashedPassword = hashPassword(password); // Hash the password
         this.dateOfBirth = dateFormat.parse(dateOfBirth); // Parse the date
         this.status = "offline";
@@ -47,6 +50,9 @@ public class User {
     // Getters and Setters
     public String getUserId() {
         return userId;
+    }
+     public String getpass() {
+        return pass;
     }
 
     public String getEmail() {
@@ -115,6 +121,9 @@ public class User {
         byte[] hashedBytes = md.digest(password.getBytes());
         return Base64.getEncoder().encodeToString(hashedBytes);
     }
+     public void setHashedPasswordDirectly(String hashedPassword) {
+        this.hashedPassword = hashedPassword;
+    }
     public static Void saveUsers(ArrayList<User> list){
         JSONArray userArray=new JSONArray();
         for(User user : list){
@@ -131,7 +140,6 @@ public class User {
            try (FileWriter file = new FileWriter("users.json")) {
             file.write(userArray.toString(4)); //  print with an indentation of 4 spaces
             file.flush();
-            System.out.println("Users successfully saved to users.json!");
         } catch (IOException e) {
             System.err.println("Error writing to file: " + e.getMessage());
         }
@@ -162,10 +170,11 @@ public class User {
 
                 // Create a User object and add it to the list
                 User user = new User(userId, email, username, hashedPassword, dateOfBirth);
+                user.setHashedPasswordDirectly(hashedPassword); // Set hashed password
+                
                 userList.add(user);
             }
 
-            System.out.println("Users successfully loaded from users.json!");
 
         } catch (IOException e) {
             System.err.println("Error reading the file: " + e.getMessage());
@@ -182,23 +191,47 @@ public static int signUp(User newUser) {
     // Check if the userId or username already exists
     for (User u : users) {
         if (newUser.getUserId().equals(u.getUserId()) || newUser.getUsername().equals(u.getUsername())) {
-            flag = 0;  
+            flag = 0;
+                      JOptionPane.showMessageDialog(null,"The id or username alreade exists","message",JOptionPane.ERROR_MESSAGE);
             break;  // Exit the loop immediately after finding a duplicate
         }
     }
 
     // If no duplicate was found, add the new user and save
     if (flag == 1) {
+        for (User u : users) {
+            u.setStatus("offline");
+        }
         newUser.setStatus("online");
         users.add(newUser);  // Add the new user
         saveUsers(users);     // Save the updated list of users
+                              JOptionPane.showMessageDialog(null,"account created succsesfully","message",JOptionPane.NO_OPTION);
+
     }
 
     return flag;  // Return the flag indicating success (1) or failure (0)
 }
+public static Boolean login(String name, String pass) throws NoSuchAlgorithmException {
+    int x=8;
+    ArrayList<User> users = loadUsers(); // Load users from the file
+    String hashedInputPassword = hashPassword(pass); // Hash the input password
+    
+    // Iterate through the users to find a matching username and hashed password
+    for (User u : users) {
+        if (u.getUsername().equalsIgnoreCase(name) && u.getHashedPassword().equals(hashedInputPassword)) {
+                        // Set the logged-in user to online
+            u.setStatus("online");
 
-        
+            // Save the updated user list
+            saveUsers(users);
+
+            return true; // Login successful
+        }
     }
+    return  false;
+    //
+    // Login failed
+} }
 
     
 
