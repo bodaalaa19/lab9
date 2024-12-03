@@ -22,21 +22,9 @@ import java.util.Date;
  */
 public class Lab99 {
     public static void main(String[] args) throws ParseException, NoSuchAlgorithmException {
+        
+            User.loadUsers();
 
- User newUser = new User("55", "test1@example.com", "user0", "password0", "2000-01-01");
-//        signUp(newUser);
-//        signUp(newUser);
-//        // Sign up the user
-//        int signUpResult = User.signUp(newUser);      
-            
-            // Test login with plain password
-          String   pass=hashPassword("password0");
-            boolean isLoggedIn = User.login("user0",pass);
-            if (isLoggedIn) {
-                System.out.println("Login successful! Welcome, user5!");
-            } else {
-                System.out.println("Login failed! Invalid username or password.");
-            }
         } 
     }
 

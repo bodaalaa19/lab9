@@ -13,19 +13,51 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.ImageIcon;
 import javax.swing.JFileChooser;
+import javax.swing.JOptionPane;
 
 /**
  *
  * @author shams
  */
 public class ProfilePage extends javax.swing.JFrame {
-private User user;
+
+    private User user;
+
     /**
      * Creates new form ProfilePage
      */
     public ProfilePage(User user) {
         initComponents();
         this.user = user;
+
+        ImageIcon i;
+        Image img;
+        Image scaledImg;
+        ImageIcon scaledIcon;
+                
+        //set cover photo
+        if (user.getProfile().getCoverPhoto() == null) {
+            i = new ImageIcon("C:\\School\\College\\Programming ll\\projects\\lab9\\src\\main\\java\\com\\mycompany\\lab99\\defaultCover.jpg");
+        } else {
+            i = new ImageIcon(user.getProfile().getCoverPhoto());
+        }
+        img = i.getImage();
+        scaledImg = img.getScaledInstance(302, 85, Image.SCALE_DEFAULT);
+        scaledIcon = new ImageIcon(scaledImg);
+        this.coverPhoto.setIcon(scaledIcon);
+        
+        //set profile photo
+        ImageIcon p;
+        if (user.getProfile().getProfilePhoto() == null) {
+            i = new ImageIcon("C:\\School\\College\\Programming ll\\projects\\lab9\\src\\main\\java\\com\\mycompany\\lab99\\defaultProfile.jpg");
+        } else {
+            i = new ImageIcon(user.getProfile().getProfilePhoto());
+        }
+        img = i.getImage();
+        scaledImg = img.getScaledInstance(92, 85, Image.SCALE_DEFAULT);
+        scaledIcon = new ImageIcon(scaledImg);
+        this.profilePhoto.setIcon(scaledIcon);
+
     }
 
     private ProfilePage() {
@@ -64,10 +96,16 @@ private User user;
             }
         });
 
-        bio.setBackground(new java.awt.Color(0, 0, 0));
+        bio.setBackground(new java.awt.Color(255, 255, 255));
+        bio.setText("add bio");
         bio.setOpaque(true);
+        bio.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                changeBio(evt);
+            }
+        });
 
-        editProfileButton.setText("Edit profile");
+        editProfileButton.setText("Change password");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -99,30 +137,40 @@ private User user;
     }// </editor-fold>//GEN-END:initComponents
 
     private void changeProfilePhoto(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_changeProfilePhoto
-        JFileChooser x=new JFileChooser();
+        JFileChooser x = new JFileChooser();
         x.showOpenDialog(this);
-        File f =x.getSelectedFile();
-        ImageIcon i=new ImageIcon(f.getAbsolutePath());
-        Image img=i.getImage();
+        File f = x.getSelectedFile();
+        ImageIcon i = new ImageIcon(f.getAbsolutePath());
 
-        Image scaledImg=img.getScaledInstance(92,85,Image.SCALE_DEFAULT);
+        Image img = i.getImage();
 
-        ImageIcon scaledIcon=new ImageIcon(scaledImg);
-        profilePhoto.setIcon(scaledIcon);
+        Image scaledImg = img.getScaledInstance(92, 85, Image.SCALE_DEFAULT);
+
+        ImageIcon scaledIcon = new ImageIcon(scaledImg);
+        this.profilePhoto.setIcon(scaledIcon);
+        this.user.getProfile().setProfilePhoto(f.getAbsolutePath());
     }//GEN-LAST:event_changeProfilePhoto
 
     private void changeCoverPhoto(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_changeCoverPhoto
-        JFileChooser x=new JFileChooser();
+        JFileChooser x = new JFileChooser();
         x.showOpenDialog(this);
-        File f =x.getSelectedFile();
-        ImageIcon i=new ImageIcon(f.getAbsolutePath());
-        Image img=i.getImage();
+        File f = x.getSelectedFile();
+        ImageIcon i = new ImageIcon(f.getAbsolutePath());
+        Image img = i.getImage();
 
-        Image scaledImg=img.getScaledInstance(302,85,Image.SCALE_DEFAULT);
+        Image scaledImg = img.getScaledInstance(302, 85, Image.SCALE_DEFAULT);
 
-        ImageIcon scaledIcon=new ImageIcon(scaledImg);
-        coverPhoto.setIcon(scaledIcon);
+        ImageIcon scaledIcon = new ImageIcon(scaledImg);
+        this.coverPhoto.setIcon(scaledIcon);
+        this.user.getProfile().setCoverPhoto(f.getAbsolutePath());
     }//GEN-LAST:event_changeCoverPhoto
+
+    private void changeBio(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_changeBio
+        String info=null;
+        info = JOptionPane.showInputDialog(null, "Enter new bio:", "Input Dialog", JOptionPane.PLAIN_MESSAGE);
+        this.bio.setText(info);
+        this.user.getProfile().setBio(info);
+    }//GEN-LAST:event_changeBio
 
     /**
      * @param args the command line arguments
@@ -152,8 +200,8 @@ private User user;
         //</editor-fold>
 
         /* Create and display the form */
-
-        java.awt.EventQueue.invokeLater(new Runnable() {public void run() {
+        java.awt.EventQueue.invokeLater(new Runnable() {
+            public void run() {
                 try {
                     new ProfilePage(new User("test userId", "test email", "test username", "test password", "12-12-2024")).setVisible(true);
                 } catch (NoSuchAlgorithmException ex) {
@@ -172,5 +220,3 @@ private User user;
     private javax.swing.JLabel profilePhoto;
     // End of variables declaration//GEN-END:variables
 }
-
-

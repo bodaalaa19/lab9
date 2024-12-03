@@ -25,6 +25,7 @@ import org.json.JSONObject;
  * @author al-aqsa
  */
 public class User {
+
     private String userId;
     private String email;
     private String username;
@@ -32,6 +33,7 @@ public class User {
     private Date dateOfBirth;
     private String status;
     private String pass;
+    private Profile profile;
 
     // Date formatter
     private static final DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
@@ -41,17 +43,19 @@ public class User {
         this.userId = userId;
         this.email = email;
         this.username = username;
-        this.pass=password;
+        this.pass = password;
         this.hashedPassword = hashPassword(password); // Hash the password
         this.dateOfBirth = dateFormat.parse(dateOfBirth); // Parse the date
         this.status = "offline";
+        this.profile=new Profile();
     }
 
     // Getters and Setters
     public String getUserId() {
         return userId;
     }
-     public String getpass() {
+
+    public String getpass() {
         return pass;
     }
 
@@ -103,16 +107,25 @@ public class User {
         this.status = status;
     }
 
+    public Profile getProfile() {
+        return profile;
+    }
+
+    public void setProfile(Profile profile) {
+        this.profile = profile;
+    }
+
+    
     @Override
     public String toString() {
-        return "User{" +
-                "userId='" + userId + '\'' +
-                ", email='" + email + '\'' +
-                ", username='" + username + '\'' +
-                ", hashedPassword='" + hashedPassword + '\'' +
-                ", dateOfBirth='" + getFormattedDateOfBirth() + '\'' +
-                ", status='" + status + '\'' +
-                '}';
+        return "User{"
+                + "userId='" + userId + '\''
+                + ", email='" + email + '\''
+                + ", username='" + username + '\''
+                + ", hashedPassword='" + hashedPassword + '\''
+                + ", dateOfBirth='" + getFormattedDateOfBirth() + '\''
+                + ", status='" + status + '\''
+                + '}';
     }
 
     // Static method to hash passwords
@@ -121,20 +134,21 @@ public class User {
         byte[] hashedBytes = md.digest(password.getBytes());
         return Base64.getEncoder().encodeToString(hashedBytes);
     }
-    public static Void saveUsers(ArrayList<User> list){
-        JSONArray userArray=new JSONArray();
-        for(User user : list){
-           JSONObject j=new JSONObject();
-            j.put("userId",user.getUserId());
-            j.put("email",user.getEmail());
-             j.put("userName",user.getUsername());
-            j.put("hashedPassword",user.getHashedPassword());
-            j.put("dateOfBirth",user.getFormattedDateOfBirth());
-            j.put("Status",user.getStatus());
-        userArray.put(j);
+
+    public static Void saveUsers(ArrayList<User> list) {
+        JSONArray userArray = new JSONArray();
+        for (User user : list) {
+            JSONObject j = new JSONObject();
+            j.put("userId", user.getUserId());
+            j.put("email", user.getEmail());
+            j.put("userName", user.getUsername());
+            j.put("hashedPassword", user.getHashedPassword());
+            j.put("dateOfBirth", user.getFormattedDateOfBirth());
+            j.put("Status", user.getStatus());
+            userArray.put(j);
 
         }
-           try (FileWriter file = new FileWriter("users.json")) {
+        try (FileWriter file = new FileWriter("users.json")) {
             file.write(userArray.toString(4)); //  print with an indentation of 4 spaces
             file.flush();
         } catch (IOException e) {
@@ -142,7 +156,8 @@ public class User {
         }
         return null;
     }
-   public static ArrayList<User> loadUsers() {
+
+    public static ArrayList<User> loadUsers() {
         ArrayList<User> userList = new ArrayList<>();
         try (FileReader reader = new FileReader("users.json")) {
             // Read the content of the file
@@ -170,7 +185,6 @@ public class User {
                 userList.add(user);
             }
 
-
         } catch (IOException e) {
             System.err.println("Error reading the file: " + e.getMessage());
         } catch (Exception e) {
@@ -179,46 +193,55 @@ public class User {
 
         return userList;
     }
-public static int signUp(User newUser) {
+
+    public static int signUp(User newUser) {
+        ArrayList<User> users = loadUsers();
+        int flag = 1;  // Default to 1 (indicating success, user can be added)
+
+        // Check if the userId or username already exists
+        for (User u : users) {
+            if (newUser.getUserId().equals(u.getUserId()) || newUser.getUsername().equals(u.getUsername())) {
+                flag = 0;
+                JOptionPane.showMessageDialog(null, "The id or username alreade exists", "message", JOptionPane.ERROR_MESSAGE);
+                break;  // Exit the loop immediately after finding a duplicate
+            }
+        }
+
+        // If no duplicate was found, add the new user and save
+        if (flag == 1) {
+            newUser.setStatus("online");
+            users.add(newUser);  // Add the new user
+            saveUsers(users);     // Save the updated list of users
+            JOptionPane.showMessageDialog(null, "account created succsesfully", "message", JOptionPane.NO_OPTION);
+
+        }
+
+        return flag;  // Return the flag indicating success (1) or failure (0)
+    }
+
+    public static Boolean login(String name, String pass) throws NoSuchAlgorithmException {
+        int x = 8;
+        ArrayList<User> users = loadUsers(); // Load users from the file
+        String hashedInputPassword = hashPassword(pass); // Hash the input password
+
+        // Iterate through the users to find a matching username and hashed password
+        for (User u : users) {
+            if (u.getUsername().equalsIgnoreCase(name) && u.getHashedPassword().equals(hashedInputPassword)) {
+                return true; // Login successful
+            }
+        }
+        return false;
+        //
+        // Login failed
+    }
+    
+    public static User getUser(String username){
     ArrayList<User> users = loadUsers();
-    int flag = 1;  // Default to 1 (indicating success, user can be added)
-
-    // Check if the userId or username already exists
     for (User u : users) {
-        if (newUser.getUserId().equals(u.getUserId()) || newUser.getUsername().equals(u.getUsername())) {
-            flag = 0;
-                      JOptionPane.showMessageDialog(null,"The id or username alreade exists","message",JOptionPane.ERROR_MESSAGE);
-            break;  // Exit the loop immediately after finding a duplicate
+            if (u.getUsername().equalsIgnoreCase(username)) {
+                return u; // returns user
+            }
         }
+    return null;
     }
-
-    // If no duplicate was found, add the new user and save
-    if (flag == 1) {
-        newUser.setStatus("online");
-        users.add(newUser);  // Add the new user
-        saveUsers(users);     // Save the updated list of users
-                              JOptionPane.showMessageDialog(null,"account created succsesfully","message",JOptionPane.NO_OPTION);
-
-    }
-
-    return flag;  // Return the flag indicating success (1) or failure (0)
 }
-public static Boolean login(String name, String pass) throws NoSuchAlgorithmException {
-    int x=8;
-    ArrayList<User> users = loadUsers(); // Load users from the file
-    String hashedInputPassword = hashPassword(pass); // Hash the input password
-    
-    // Iterate through the users to find a matching username and hashed password
-    for (User u : users) {
-        if (u.getUsername().equalsIgnoreCase(name) && u.getHashedPassword().equals(hashedInputPassword)) {
-            return true; // Login successful
-        }
-    }
-    return  false;
-    //
-    // Login failed
-} }
-
-    
-
-

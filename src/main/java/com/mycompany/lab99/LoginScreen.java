@@ -14,12 +14,13 @@ import java.util.logging.Logger;
  * @author Victus
  */
 public class LoginScreen extends javax.swing.JFrame {
-
+ProfilePage profilepage;
     /**
      * Creates new form LoginScreen
      */
     public LoginScreen() {
         initComponents();
+        this.profilepage=null;
     }
 
     /**
@@ -95,21 +96,27 @@ public class LoginScreen extends javax.swing.JFrame {
 
     private void LoginBtnLoginAction(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_LoginBtnLoginAction
         // TODO add your handling code here:
-  String username=LoginUsername.getText();
-  String password=LoginPassword.getText();
+        String username = LoginUsername.getText();
+        String password = LoginPassword.getText();
         try {
-            String hashed=User.hashPassword(password);
-             try {
-            if(login(username,hashed)){
-                System.out.println("succsess");
-            }else System.out.println("fail");
+            String hashed = User.hashPassword(password);
+            try {
+                if (login(username, hashed)) {
+                    System.out.println("succsess");
+                    if(this.profilepage==null)
+                        this.profilepage=new ProfilePage(User.getUser(username));
+                    this.profilepage.setVisible(true);
+                    this.setVisible(false);
+                } else {
+                    System.out.println("fail");
+                }
+            } catch (NoSuchAlgorithmException ex) {
+                Logger.getLogger(LoginScreen.class.getName()).log(Level.SEVERE, null, ex);
+            }
         } catch (NoSuchAlgorithmException ex) {
             Logger.getLogger(LoginScreen.class.getName()).log(Level.SEVERE, null, ex);
         }
-        } catch (NoSuchAlgorithmException ex) {
-            Logger.getLogger(LoginScreen.class.getName()).log(Level.SEVERE, null, ex);
-        }
-       
+
     }//GEN-LAST:event_LoginBtnLoginAction
 
     /**
