@@ -120,11 +120,11 @@ public class LoginScreen extends javax.swing.JFrame {
             this.dispose();
             profilePage.setVisible(true);
             
-            }else 
+            }else {
                                               JOptionPane.showMessageDialog(null,"invalid username or password","message",JOptionPane.ERROR_MESSAGE);
 
                 
-                System.out.println("fail");
+                System.out.println("fail");}
         } catch (NoSuchAlgorithmException ex) {
             Logger.getLogger(LoginScreen.class.getName()).log(Level.SEVERE, null, ex);
         }
