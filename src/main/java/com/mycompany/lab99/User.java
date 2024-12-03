@@ -121,6 +121,9 @@ public class User {
         byte[] hashedBytes = md.digest(password.getBytes());
         return Base64.getEncoder().encodeToString(hashedBytes);
     }
+     public void setHashedPasswordDirectly(String hashedPassword) {
+        this.hashedPassword = hashedPassword;
+    }
     public static Void saveUsers(ArrayList<User> list){
         JSONArray userArray=new JSONArray();
         for(User user : list){
@@ -167,6 +170,8 @@ public class User {
 
                 // Create a User object and add it to the list
                 User user = new User(userId, email, username, hashedPassword, dateOfBirth);
+                user.setHashedPasswordDirectly(hashedPassword); // Set hashed password
+                
                 userList.add(user);
             }
 
@@ -194,6 +199,9 @@ public static int signUp(User newUser) {
 
     // If no duplicate was found, add the new user and save
     if (flag == 1) {
+        for (User u : users) {
+            u.setStatus("offline");
+        }
         newUser.setStatus("online");
         users.add(newUser);  // Add the new user
         saveUsers(users);     // Save the updated list of users
@@ -211,6 +219,12 @@ public static Boolean login(String name, String pass) throws NoSuchAlgorithmExce
     // Iterate through the users to find a matching username and hashed password
     for (User u : users) {
         if (u.getUsername().equalsIgnoreCase(name) && u.getHashedPassword().equals(hashedInputPassword)) {
+                        // Set the logged-in user to online
+            u.setStatus("online");
+
+            // Save the updated user list
+            saveUsers(users);
+
             return true; // Login successful
         }
     }
