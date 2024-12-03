@@ -15,6 +15,15 @@ public class Content {
         
     }
 
+    public Content(String userId, String content, LocalDateTime timeStamp, String imageSource) {
+        this.userId = userId;
+        this.content = content;
+        this.timeStamp = timeStamp;
+        this.imageSource = imageSource;
+    }
+    
+    
+
     public String getContentId() {
         return contentId;
     }
@@ -53,6 +62,11 @@ public class Content {
 
     public void setImageSource(String imageSource) {
         this.imageSource = imageSource;
+    }
+
+    @Override
+    public String toString() {
+        return "Content{" + "contentId=" + contentId + ", userId=" + userId + ", content=" + content + ", timeStamp=" + timeStamp + ", imageSource=" + imageSource + '}';
     }
     
     

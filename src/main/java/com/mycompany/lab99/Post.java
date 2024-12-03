@@ -7,35 +7,31 @@ import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.Random;
 import java.util.Scanner;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
 public class Post extends Content{
     private DateTimeFormatter formatter;
-    private static int postCounter=0;
+    //private static int postCounter=0;
     private ArrayList<Post> posts;
     
     public Post() {
         formatter=DateTimeFormatter.ofPattern("dd-MM-yyyy HH:mm");
         posts=new ArrayList<>();
     }
-    
-    public void createPost(User user, String src, String postContent){
-        Post post=new Post();
-        String userId=user.getUserId();
-        LocalDateTime ldt=LocalDateTime.now();
-        LocalDateTime formattedTime=LocalDateTime.parse(ldt.format(formatter), formatter);
-        post.setContentId("P"+postCounter++);
-        post.setContent(postContent);
-        post.setUserId(userId);
-        post.setTimeStamp(formattedTime);
-        post.setImageSource(src);
-        posts.add(post);
-        user.setPosts(posts);
+
+    public Post(String userId, String content, LocalDateTime timeStamp, String imageSource) {
+        super(userId, content, timeStamp, imageSource);
+        formatter = DateTimeFormatter.ofPattern("dd-MM-yyyy HH:mm");;
+        posts=new ArrayList<>();
+        Random random=new Random();
+        setContentId("post"+random.nextInt(Integer.MAX_VALUE));
     }
     
-    /*public void savePosts(ArrayList<Post> posts){
+    
+    public static void savePosts(ArrayList<Post> posts){
         JSONArray postArray=new JSONArray();
         for(Post post : posts){
            JSONObject j=new JSONObject();
@@ -43,6 +39,7 @@ public class Post extends Content{
             j.put("userId",post.getUserId());
             j.put("content",post.getContent());
             j.put("timestamp",post.getTimeStamp());
+            j.put("imagesrc",post.getImageSource());
             postArray.put(j);
         }
            try (FileWriter file = new FileWriter("posts.json")) {
@@ -52,7 +49,55 @@ public class Post extends Content{
         } catch (IOException e) {
             System.err.println("Error writing to file: " + e.getMessage());
         }
-    }*/
+    }
+    
+    public static ArrayList<Post> loadPosts() {
+        ArrayList<Post> postList = new ArrayList<>();
+        try (FileReader reader = new FileReader("posts.json")) {
+            // Read the content of the file
+            Scanner scanner = new Scanner(reader);
+            StringBuilder jsonContent = new StringBuilder();
+
+            while (scanner.hasNextLine()) {
+                jsonContent.append(scanner.nextLine());
+            }
+
+            JSONArray postArray = new JSONArray(jsonContent.toString());
+
+            // Iterate through the JSONArray and create Post objects
+            for (int i = 0; i < postArray.length(); i++) {
+                JSONObject userJson = postArray.getJSONObject(i);
+                String postId = userJson.getString("postId");
+                String userId = userJson.getString("userId");
+                String content = userJson.getString("content");
+                LocalDateTime timestamp = LocalDateTime.parse(userJson.getString("timestamp"));
+                String imagesrc = userJson.getString("imagesrc");
+
+                // Create a Post object
+                Post post = new Post(userId, content, timestamp, imagesrc);
+                post.setContentId(postId);
+            
+                postList.add(post);
+            }
+        } catch (IOException e) {
+            System.err.println("Error reading the file: " + e.getMessage());
+        } catch (Exception e) {
+            System.err.println("Error parsing the JSON or creating User objects: " + e.getMessage());
+        }
+
+        return postList;
+    }
+    
+    public static ArrayList<Post> loadPostsForUser(String userId){
+        ArrayList<Post> allPosts=loadPosts();
+        ArrayList<Post> userPosts=new ArrayList<>();
+        for(int i=0;i<allPosts.size();i++){
+            if(allPosts.get(i).getUserId().equals(userId)){
+                userPosts.add(allPosts.get(i));
+            }
+        }
+        return userPosts;
+    }
     
     
     

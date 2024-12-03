@@ -33,7 +33,6 @@ public class User {
     private String status;
     private String pass;
     private Profile profile;
-    private ArrayList<Post> posts;
 
     // Date formatter
     private static final DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
@@ -48,7 +47,6 @@ public class User {
         this.dateOfBirth = dateFormat.parse(dateOfBirth); // Parse the date
         this.status = "offline";
         this.profile=new Profile();
-        this.posts=new ArrayList<>();
     }
       public void setProfile(Profile p) {
         this.profile=p;
@@ -111,17 +109,7 @@ public class User {
 
     public void setStatus(String status) {
         this.status = status;
-    }
-
-    public ArrayList<Post> getPosts() {
-        return posts;
-    }
-
-    public void setPosts(ArrayList<Post> posts) {
-        this.posts = posts;
-    }
-    
-    
+    }    
 
     @Override
     public String toString() {
