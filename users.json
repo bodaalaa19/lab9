@@ -1,6 +1,6 @@
 [
     {
-        "Status": "offline",
+        "Status": "online",
         "hashedPassword": "Mk6NVxav5HdRGP4SJW/T1IjM5XXjdc5vjrFstLW7tdM=",
         "dateOfBirth": "2024-01-01",
         "userName": "bba",
@@ -8,7 +8,7 @@
         "email": "bba"
     },
     {
-        "Status": "online",
+        "Status": "offline",
         "hashedPassword": "d+b3ivRfZJxfO46+SEqRoUTrIDo0qJyNxbHEyoe8b3E=",
         "dateOfBirth": "2024-01-01",
         "userName": "bbc",
