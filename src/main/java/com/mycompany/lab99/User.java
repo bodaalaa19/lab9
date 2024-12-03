@@ -200,6 +200,7 @@ public static int signUp(User newUser) {
     return flag;  // Return the flag indicating success (1) or failure (0)
 }
 public static Boolean login(String name, String pass) throws NoSuchAlgorithmException {
+    int x=8;
     ArrayList<User> users = loadUsers(); // Load users from the file
     String hashedInputPassword = hashPassword(pass); // Hash the input password
     
@@ -209,7 +210,9 @@ public static Boolean login(String name, String pass) throws NoSuchAlgorithmExce
             return true; // Login successful
         }
     }
-    return false; // Login failed
+    return  false;
+    //
+    // Login failed
 } }
 
     
