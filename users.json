@@ -1,66 +1,8 @@
-[
-    {
-        "Status": "offline",
-        "hashedPassword": "GBQCWAawp5BX6HOORJlM0UMx7A6wxxSeqkakmpVg0ao=",
-        "dateOfBirth": "2000-01-01",
-        "userName": "user1",
-        "userId": "1",
-        "email": "user1@example.com"
-    },
-    {
-        "Status": "offline",
-        "hashedPassword": "YQ5ccIt0CS6s/H95uuZ0js26Ak1hE9q/ZzQZY2fWuOM=",
-        "dateOfBirth": "1995-05-15",
-        "userName": "user2",
-        "userId": "2",
-        "email": "user2@example.com"
-    },
-    {
-        "Status": "offline",
-        "hashedPassword": "2q8Ae3WDyA6cijYjALFo0mxz1zeWQ/hYb5LbeIZFIbc=",
-        "dateOfBirth": "0017-05-25",
-        "userName": "abdo",
-        "userId": "8768",
-        "email": "abdep"
-    },
-    {
-        "Status": "offline",
-        "hashedPassword": "+bqeSYed5gQS72Sz2w0vwh3qJu6sW1IR/hlaFjaiO1E=",
-        "dateOfBirth": "2003-11-11",
-        "userName": "abdiio",
-        "userId": "876811",
-        "email": "abdooo"
-    },
-    {
-        "Status": "offline",
-        "hashedPassword": "FheawTkuECQ/I41kszq+2BR/u/a4Y5nJndea3MlWRM0=",
-        "dateOfBirth": "2024-11-01",
-        "userName": "ppp",
-        "userId": "7777",
-        "email": "abdo@"
-    },
-    {
-        "Status": "offline",
-        "hashedPassword": "cie7dAJxhCUTfZLHsE1h+LX6Ows2t4P7r+ohyrWoyU8=",
-        "dateOfBirth": "2024-11-08",
-        "userName": "kak1",
-        "userId": "87688",
-        "email": "ooo@"
-    },
-    {
-        "Status": "offline",
-        "hashedPassword": "lMJz/CXvucU8+QTqaiR+Am8Bxchu5VSbsIHttrfVN+0=",
-        "dateOfBirth": "2003-11-12",
-        "userName": "boda2",
-        "userId": "abdoalaa",
-        "email": "abdelrah@"
-    },
-    {
-        "Status": "online",
-        "hashedPassword": "ZTo6deTAgbPd3b8mIgMpWTB3f9U8yausv4A1SmlS8x8=",
-        "dateOfBirth": "2024-11-02",
-        "userName": "koj",
-        "userId": "1122",
-        "email": "k"
-    }
-]
+[{
+    "Status": "online",
+    "hashedPassword": "H0iVgvfqTCCLcCGaK7ajIiJ6dRZjBTChDtfycQz75Ec=",
+    "dateOfBirth": "2000-01-01",
+    "userName": "user0",
+    "userId": "55",
+    "email": "test1@example.com"
+}]
