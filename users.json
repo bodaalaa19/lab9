@@ -1,34 +1,8 @@
-[
-    {
-        "Status": "offline",
-        "hashedPassword": "bDHkyNTvTXM5qUbUDJX6/Rq2IJGGAtf1J9DV/Slptm0=",
-        "dateOfBirth": "2000-01-01",
-        "userName": "user1",
-        "userId": "1",
-        "email": "user1@example.com"
-    },
-    {
-        "Status": "offline",
-        "hashedPassword": "p9gWjk7L+2HrCALNmD7DTBIvwFkAJc05CpHbny+dK88=",
-        "dateOfBirth": "1995-05-15",
-        "userName": "user2",
-        "userId": "2",
-        "email": "user2@example.com"
-    },
-    {
-        "Status": "offline",
-        "hashedPassword": "t32MsHP9/Lh03EyRGCR4lnoO605xkUU8jqX9q2hMpzM=",
-        "dateOfBirth": "0017-05-25",
-        "userName": "abdo",
-        "userId": "8768",
-        "email": "abdep"
-    },
-    {
-        "Status": "online",
-        "hashedPassword": "jZae727K08KaOmKSgOaGzww/XVqGr/PKEgIMkjrcbJI=",
-        "dateOfBirth": "2003-11-11",
-        "userName": "abdiio",
-        "userId": "876811",
-        "email": "abdooo"
-    }
-]
+[{
+    "Status": "online",
+    "hashedPassword": "H0iVgvfqTCCLcCGaK7ajIiJ6dRZjBTChDtfycQz75Ec=",
+    "dateOfBirth": "2000-01-01",
+    "userName": "user0",
+    "userId": "55",
+    "email": "test1@example.com"
+}]
