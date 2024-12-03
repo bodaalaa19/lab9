@@ -152,6 +152,9 @@ public class SignUpScreen extends javax.swing.JFrame {
         try {
             User user=new User(id, email, username, password, date);
            signUp(user);
+           this.dispose();
+           LoginScreen loginScreen=new LoginScreen();
+           loginScreen.setVisible(true);
           
         } catch (NoSuchAlgorithmException ex) {
             Logger.getLogger(SignUpScreen.class.getName()).log(Level.SEVERE, null, ex);
