@@ -103,7 +103,7 @@ public class LoginScreen extends javax.swing.JFrame {
         try {
             String hashed=User.hashPassword(password);
              try {
-            if(login(username,hashed)){
+            if(login(username,password)){
                 System.out.println("succsess");
                     ArrayList<User> users = loadUsers();
 // Find user object with the given username
