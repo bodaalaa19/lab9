@@ -4,8 +4,10 @@
  */
 package com.mycompany.lab99;
 
+import static com.mycompany.lab99.User.loadUsers;
 import static com.mycompany.lab99.User.login;
 import java.security.NoSuchAlgorithmException;
+import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -102,6 +104,19 @@ public class LoginScreen extends javax.swing.JFrame {
              try {
             if(login(username,hashed)){
                 System.out.println("succsess");
+                    ArrayList<User> users = loadUsers();
+// Find user object with the given username
+            User loggedInUser = null;
+            for (User user : users) {
+                if (user.getUsername().equals(username)) { // Assuming getUsername() method in User class
+                    loggedInUser = user;
+                    break;
+                }
+            }
+            ProfilePage profilePage=new ProfilePage(loggedInUser);
+            this.dispose();
+            profilePage.setVisible(true);
+            
             }else System.out.println("fail");
         } catch (NoSuchAlgorithmException ex) {
             Logger.getLogger(LoginScreen.class.getName()).log(Level.SEVERE, null, ex);
