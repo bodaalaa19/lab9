@@ -10,6 +10,7 @@ import java.security.NoSuchAlgorithmException;
 import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -113,11 +114,17 @@ public class LoginScreen extends javax.swing.JFrame {
                     break;
                 }
             }
+                                          JOptionPane.showMessageDialog(null,"Loged in succsesfully","message",JOptionPane.NO_OPTION);
+
             ProfilePage profilePage=new ProfilePage(loggedInUser);
             this.dispose();
             profilePage.setVisible(true);
             
-            }else System.out.println("fail");
+            }else 
+                                              JOptionPane.showMessageDialog(null,"invalid username or password","message",JOptionPane.ERROR_MESSAGE);
+
+                
+                System.out.println("fail");
         } catch (NoSuchAlgorithmException ex) {
             Logger.getLogger(LoginScreen.class.getName()).log(Level.SEVERE, null, ex);
         }
