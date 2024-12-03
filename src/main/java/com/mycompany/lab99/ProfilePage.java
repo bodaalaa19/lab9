@@ -6,6 +6,7 @@ package com.mycompany.lab99;
 
 import com.mycompany.lab99.User;
 import java.awt.Image;
+import static java.awt.PageAttributes.MediaType.C;
 import java.io.File;
 import java.security.NoSuchAlgorithmException;
 import java.text.ParseException;
@@ -23,9 +24,41 @@ private User user;
     /**
      * Creates new form ProfilePage
      */
+    private static final String DEFAULT_COVER_PICTURE_PATH = "C:\\Users\\Victus\\Documents\\GitHub\\lab9\\src\\main\\java\\com\\mycompany\\lab99\\defaultCover.jpg";
+
+    private static final String DEFAULT_PROFILE_PICTURE_PATH = 
+        "C:\\Users\\Victus\\Documents\\GitHub\\lab9\\src\\main\\java\\com\\mycompany\\lab99\\defaultProfile.jpg";
+
     public ProfilePage(User user) {
         initComponents();
         this.user = user;
+        if(user.getProfile().getCoverPhoto().equals("hhh"))
+        setDefaultProfilePicture();
+                if(user.getProfile().getProfilePhoto().equals("ghvh"))
+        setDefaultCoverPhoto();
+    }
+
+    private void setDefaultProfilePicture() {
+        File file = new File(DEFAULT_PROFILE_PICTURE_PATH);
+        if (file.exists()) {
+            ImageIcon icon = new ImageIcon(DEFAULT_PROFILE_PICTURE_PATH);
+            Image img = icon.getImage();
+            Image scaledImg = img.getScaledInstance(92, 85, Image.SCALE_DEFAULT);
+            profilePhoto.setIcon(new ImageIcon(scaledImg));
+        } else {
+            System.err.println("Default profile picture not found at: " + DEFAULT_PROFILE_PICTURE_PATH);
+        }
+    }
+    private void setDefaultCoverPhoto() {
+        File file = new File(DEFAULT_COVER_PICTURE_PATH);
+        if (file.exists()) {
+            ImageIcon icon = new ImageIcon(DEFAULT_COVER_PICTURE_PATH);
+            Image img = icon.getImage();
+            Image scaledImg = img.getScaledInstance(302, 85, Image.SCALE_DEFAULT);
+            coverPhoto.setIcon(new ImageIcon(scaledImg));
+        } else {
+            System.err.println("Default cover photo not found at: " + DEFAULT_COVER_PICTURE_PATH);
+        }
     }
 
     private ProfilePage() {
