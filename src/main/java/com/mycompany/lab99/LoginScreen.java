@@ -104,40 +104,40 @@ public class LoginScreen extends javax.swing.JFrame {
 
     private void LoginBtnLoginAction(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_LoginBtnLoginAction
         // TODO add your handling code here:
-  String username=LoginUsername.getText();
-  String password=LoginPassword.getText();
+        String username = LoginUsername.getText();
+        String password = LoginPassword.getText();
         try {
-            String hashed=User.hashPassword(password);
-             try {
-            if(login(username,password)){
-                System.out.println("succsess");
+            String hashed = User.hashPassword(password);
+            try {
+                if (login(username, password)) {
+                    System.out.println("succsess");
                     ArrayList<User> users = loadUsers();
 // Find user object with the given username
-            User loggedInUser = null;
-            for (User user : users) {
-                if (user.getUsername().equals(username)) { // Assuming getUsername() method in User class
-                    loggedInUser = user;
-                    break;
+                    User loggedInUser = null;
+                    for (User user : users) {
+                        if (user.getUsername().equals(username)) { // Assuming getUsername() method in User class
+                            loggedInUser = user;
+                            break;
+                        }
+                    }
+                    JOptionPane.showMessageDialog(null, "Loged in succsesfully", "message", JOptionPane.NO_OPTION);
+
+                    ProfilePage profilePage = new ProfilePage(loggedInUser);
+                    this.dispose();
+                    profilePage.setVisible(true);
+
+                } else {
+                    JOptionPane.showMessageDialog(null, "invalid username or password", "message", JOptionPane.ERROR_MESSAGE);
+
+                    System.out.println("fail");
                 }
+            } catch (NoSuchAlgorithmException ex) {
+                Logger.getLogger(LoginScreen.class.getName()).log(Level.SEVERE, null, ex);
             }
-                                          JOptionPane.showMessageDialog(null,"Loged in succsesfully","message",JOptionPane.NO_OPTION);
-
-            ProfilePage profilePage=new ProfilePage(loggedInUser);
-            this.dispose();
-            profilePage.setVisible(true);
-            
-            }else {
-                                              JOptionPane.showMessageDialog(null,"invalid username or password","message",JOptionPane.ERROR_MESSAGE);
-
-                
-                System.out.println("fail");}
         } catch (NoSuchAlgorithmException ex) {
             Logger.getLogger(LoginScreen.class.getName()).log(Level.SEVERE, null, ex);
         }
-        } catch (NoSuchAlgorithmException ex) {
-            Logger.getLogger(LoginScreen.class.getName()).log(Level.SEVERE, null, ex);
-        }
-       
+
     }//GEN-LAST:event_LoginBtnLoginAction
 
     private void LoginUsernameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_LoginUsernameActionPerformed

@@ -48,12 +48,6 @@ public class User {
         this.status = "offline";
         this.profile=new Profile();
     }
-      public void setProfile(Profile p) {
-        this.profile=p;
-    }
-      public Profile getProfile() {
-        return this.profile;
-    }
 
     // Getters and Setters
     public String getUserId() {
@@ -109,6 +103,13 @@ public class User {
 
     public void setStatus(String status) {
         this.status = status;
+    }
+    
+    public void setProfile(Profile p) {
+        this.profile=p;
+    }
+      public Profile getProfile() {
+        return this.profile;
     }
 
     @Override
