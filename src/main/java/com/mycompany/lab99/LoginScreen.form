@@ -32,7 +32,7 @@
               <EmptySpace min="-2" pref="33" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
                   <Component id="LoginPassword" min="-2" pref="148" max="-2" attributes="0"/>
-                  <Component id="LoginId" min="-2" pref="148" max="-2" attributes="0"/>
+                  <Component id="LoginUsername" min="-2" pref="148" max="-2" attributes="0"/>
               </Group>
               <EmptySpace pref="55" max="32767" attributes="0"/>
           </Group>
@@ -48,7 +48,7 @@
           <Group type="102" alignment="0" attributes="0">
               <EmptySpace min="-2" pref="86" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                  <Component id="LoginId" pref="30" max="32767" attributes="0"/>
+                  <Component id="LoginUsername" pref="30" max="32767" attributes="0"/>
                   <Component id="jLabel1" max="32767" attributes="0"/>
               </Group>
               <EmptySpace min="-2" pref="26" max="-2" attributes="0"/>
@@ -69,7 +69,7 @@
         <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
           <Color blue="ff" green="ff" red="ff" type="rgb"/>
         </Property>
-        <Property name="text" type="java.lang.String" value="Enter your user ID:"/>
+        <Property name="text" type="java.lang.String" value="Enter your username:"/>
         <Property name="opaque" type="boolean" value="true"/>
       </Properties>
     </Component>
@@ -82,7 +82,7 @@
         <Property name="opaque" type="boolean" value="true"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JTextField" name="LoginId">
+    <Component class="javax.swing.JTextField" name="LoginUsername">
     </Component>
     <Component class="javax.swing.JTextField" name="LoginPassword">
     </Component>
