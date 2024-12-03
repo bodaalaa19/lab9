@@ -14,9 +14,9 @@ public class Profile {
     private String bio;
 
     public Profile() {
-        this.coverPhoto = null;
-        this.profilePhoto = null;
-        this.bio = null;
+        this.coverPhoto = "hhh";
+        this.profilePhoto = "ghvh";
+        this.bio = "hfc";
     }
 
     public String getCoverPhoto() {
