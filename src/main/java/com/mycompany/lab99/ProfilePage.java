@@ -28,10 +28,10 @@ public class ProfilePage extends javax.swing.JFrame {
     /**
      * Creates new form ProfilePage
      */
-    private static final String DEFAULT_COVER_PICTURE_PATH = "C:\\School\\College\\Programming ll\\projects\\lab9\\src\\main\\java\\com\\mycompany\\lab99\\defaultCover.jpg";
+    private static final String DEFAULT_COVER_PICTURE_PATH = "C:\\Users\\Victus\\Documents\\GitHub\\lab9\\src\\main\\java\\com\\mycompany\\lab99\\defaultCover.jpg";
     
     private static final String DEFAULT_PROFILE_PICTURE_PATH
-            = "C:\\School\\College\\Programming ll\\projects\\lab9\\src\\main\\java\\com\\mycompany\\lab99\\defaultProfile.jpg";
+            = "C:\\Users\\Victus\\Documents\\GitHub\\lab9\\src\\main\\java\\com\\mycompany\\lab99\\defaultProfile.jpg";
     
     public ProfilePage(User user) {
         initComponents();
@@ -53,6 +53,7 @@ public class ProfilePage extends javax.swing.JFrame {
         } else {
             path = this.user.getProfile().getProfilePhoto();
         }
+        
         
         File file = new File(path);
         if (file.exists()) {
@@ -111,6 +112,7 @@ public class ProfilePage extends javax.swing.JFrame {
         coverPhoto = new javax.swing.JLabel();
         bio = new javax.swing.JLabel();
         editProfileButton = new javax.swing.JButton();
+        LogoutButton = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -145,6 +147,14 @@ public class ProfilePage extends javax.swing.JFrame {
             }
         });
 
+        LogoutButton.setBackground(new java.awt.Color(255, 153, 153));
+        LogoutButton.setText("Logout");
+        LogoutButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                LogoutButtonActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -157,6 +167,10 @@ public class ProfilePage extends javax.swing.JFrame {
                 .addComponent(bio, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(editProfileButton))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(17, 17, 17)
+                .addComponent(LogoutButton)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -168,7 +182,9 @@ public class ProfilePage extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(editProfileButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(bio, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addGap(0, 186, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 139, Short.MAX_VALUE)
+                .addComponent(LogoutButton)
+                .addGap(24, 24, 24))
         );
 
         pack();
@@ -247,6 +263,22 @@ this.changepassword.setVisible(true);
 
     }//GEN-LAST:event_editProfileButtonActionPerformed
 
+    private void LogoutButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_LogoutButtonActionPerformed
+        // TODO add your handling code here:
+                    ArrayList<User> users = User.loadUsers();
+
+    for (User u : users) {
+        if (u.getUsername().equals(user.getUsername())) {
+            u.setStatus("offline");
+            break;
+        }
+    }
+        User.saveUsers(users);
+        MainScreen m=MainScreen.getInstance();
+        m.setVisible(true);
+        this.setVisible(false);
+    }//GEN-LAST:event_LogoutButtonActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -282,6 +314,7 @@ this.changepassword.setVisible(true);
         });
     }
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton LogoutButton;
     private javax.swing.JLabel bio;
     private javax.swing.JLabel coverPhoto;
     private javax.swing.JButton editProfileButton;
