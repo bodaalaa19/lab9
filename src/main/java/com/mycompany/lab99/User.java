@@ -229,6 +229,8 @@ public static int signUp(User newUser) {
 
     // If no duplicate was found, add the new user and save
     if (flag == 1) {
+                              JOptionPane.showMessageDialog(null,"user created succsessfully","message",JOptionPane.NO_OPTION);
+
         for (User u : users) {
             u.setStatus("offline");
         }

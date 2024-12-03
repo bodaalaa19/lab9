@@ -78,7 +78,7 @@
         "email": "test1@example.com"
     },
     {
-        "Status": "online",
+        "Status": "offline",
         "hashedPassword": "4kmHYKYBUVDyiTbecB9zpPyHl8/N/d43v8XS4dN37vk=",
         "profile": {
             "profilePhoto": "ghvh",
@@ -91,7 +91,7 @@
         "email": "test1@example.com"
     },
     {
-        "Status": "online",
+        "Status": "offline",
         "hashedPassword": "1AoWN0BAyJJcvvgp21/pCB4rLn+paBRraKBVUpDvDLQ=",
         "profile": {
             "profilePhoto": "ghvh",
@@ -104,7 +104,7 @@
         "email": "test1@example.com"
     },
     {
-        "Status": "online",
+        "Status": "offline",
         "hashedPassword": "pVNuVFg7KjDwqQSOCsS+UNFU5cCwtzbqI1UhVGKPcUI=",
         "profile": {
             "profilePhoto": "ghvh",
@@ -115,5 +115,31 @@
         "userName": "user90",
         "userId": "90",
         "email": "test1@example.com"
+    },
+    {
+        "Status": "offline",
+        "hashedPassword": "n+Cc23ZZNcXEsJXSk6aI6cagtxhu+IgMWZul+end+SY=",
+        "profile": {
+            "profilePhoto": "ghvh",
+            "coverPhoto": "hhh",
+            "bio": "hfc"
+        },
+        "dateOfBirth": "2024-01-01",
+        "userName": "abdo",
+        "userId": "abdo",
+        "email": "abdo"
+    },
+    {
+        "Status": "online",
+        "hashedPassword": "ypeBEsobvcr6wjGzmiPcTaeG7/gUfE5yuYB3ha/uSLs=",
+        "profile": {
+            "profilePhoto": "ghvh",
+            "coverPhoto": "hhh",
+            "bio": "hfc"
+        },
+        "dateOfBirth": "2024-01-04",
+        "userName": "a",
+        "userId": "a",
+        "email": "a"
     }
 ]
