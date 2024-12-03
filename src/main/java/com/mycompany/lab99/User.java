@@ -32,6 +32,7 @@ public class User {
     private Date dateOfBirth;
     private String status;
     private String pass;
+    private Profile profile;
 
     // Date formatter
     private static final DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
@@ -45,6 +46,13 @@ public class User {
         this.hashedPassword = hashPassword(password); // Hash the password
         this.dateOfBirth = dateFormat.parse(dateOfBirth); // Parse the date
         this.status = "offline";
+        this.profile=new Profile();
+    }
+      public void setProfile(Profile p) {
+        this.profile=p;
+    }
+      public Profile getProfile() {
+        return this.profile;
     }
 
     // Getters and Setters
@@ -124,66 +132,88 @@ public class User {
      public void setHashedPasswordDirectly(String hashedPassword) {
         this.hashedPassword = hashedPassword;
     }
-    public static Void saveUsers(ArrayList<User> list){
-        JSONArray userArray=new JSONArray();
-        for(User user : list){
-           JSONObject j=new JSONObject();
-            j.put("userId",user.getUserId());
-            j.put("email",user.getEmail());
-             j.put("userName",user.getUsername());
-            j.put("hashedPassword",user.getHashedPassword());
-            j.put("dateOfBirth",user.getFormattedDateOfBirth());
-            j.put("Status",user.getStatus());
+public static Void saveUsers(ArrayList<User> list) {
+    JSONArray userArray = new JSONArray();
+    for (User user : list) {
+        JSONObject j = new JSONObject();
+        j.put("userId", user.getUserId());
+        j.put("email", user.getEmail());
+        j.put("userName", user.getUsername());
+        j.put("hashedPassword", user.getHashedPassword());
+        j.put("dateOfBirth", user.getFormattedDateOfBirth());
+        j.put("Status", user.getStatus());
+
+        // Save the profile data
+        Profile profile = user.getProfile();
+        if (profile != null) {
+            JSONObject profileJson = new JSONObject();
+            profileJson.put("coverPhoto", profile.getCoverPhoto());
+            profileJson.put("profilePhoto", profile.getProfilePhoto());
+            profileJson.put("bio", profile.getBio());
+            j.put("profile", profileJson);
+        }
+
         userArray.put(j);
-
-        }
-           try (FileWriter file = new FileWriter("users.json")) {
-            file.write(userArray.toString(4)); //  print with an indentation of 4 spaces
-            file.flush();
-        } catch (IOException e) {
-            System.err.println("Error writing to file: " + e.getMessage());
-        }
-        return null;
     }
-   public static ArrayList<User> loadUsers() {
-        ArrayList<User> userList = new ArrayList<>();
-        try (FileReader reader = new FileReader("users.json")) {
-            // Read the content of the file
-            Scanner scanner = new Scanner(reader);
-            StringBuilder jsonContent = new StringBuilder();
 
-            while (scanner.hasNextLine()) {
-                jsonContent.append(scanner.nextLine());
-            }
+    try (FileWriter file = new FileWriter("users.json")) {
+        file.write(userArray.toString(4)); // Print with an indentation of 4 spaces
+        file.flush();
+    } catch (IOException e) {
+        System.err.println("Error writing to file: " + e.getMessage());
+    }
+    return null;
+}
 
-            JSONArray userArray = new JSONArray(jsonContent.toString());
+public static ArrayList<User> loadUsers() {
+    ArrayList<User> userList = new ArrayList<>();
+    try (FileReader reader = new FileReader("users.json")) {
+        // Read the content of the file
+        Scanner scanner = new Scanner(reader);
+        StringBuilder jsonContent = new StringBuilder();
 
-            // Iterate through the JSONArray and create User objects
-            for (int i = 0; i < userArray.length(); i++) {
-                JSONObject userJson = userArray.getJSONObject(i);
-                String userId = userJson.getString("userId");
-                String email = userJson.getString("email");
-                String username = userJson.getString("userName");
-                String hashedPassword = userJson.getString("hashedPassword");
-                String dateOfBirth = userJson.getString("dateOfBirth");
-                String status = userJson.getString("Status");
+        while (scanner.hasNextLine()) {
+            jsonContent.append(scanner.nextLine());
+        }
 
-                // Create a User object and add it to the list
-                User user = new User(userId, email, username, hashedPassword, dateOfBirth);
-                user.setHashedPasswordDirectly(hashedPassword); // Set hashed password
+        JSONArray userArray = new JSONArray(jsonContent.toString());
+
+        // Iterate through the JSONArray and create User objects
+        for (int i = 0; i < userArray.length(); i++) {
+            JSONObject userJson = userArray.getJSONObject(i);
+            String userId = userJson.getString("userId");
+            String email = userJson.getString("email");
+            String username = userJson.getString("userName");
+            String hashedPassword = userJson.getString("hashedPassword");
+            String dateOfBirth = userJson.getString("dateOfBirth");
+            String status = userJson.getString("Status");
+
+            // Create a User object
+  User user = new User(userId, email, username, hashedPassword, dateOfBirth);
+            user.setHashedPasswordDirectly(hashedPassword);
+            user.setStatus(status);
+            // Load profile data if available
+            if (userJson.has("profile")) {
+                JSONObject profileJson = userJson.getJSONObject("profile");
+                Profile profile = new Profile();
+                profile.setCoverPhoto(profileJson.optString("coverPhoto", null));
+                profile.setProfilePhoto(profileJson.optString("profilePhoto", null));
+                profile.setBio(profileJson.optString("bio", null));
+                user.setProfile(profile);
                 
-                userList.add(user);
             }
-
-
-        } catch (IOException e) {
-            System.err.println("Error reading the file: " + e.getMessage());
-        } catch (Exception e) {
-            System.err.println("Error parsing the JSON or creating User objects: " + e.getMessage());
+            
+            userList.add(user);
         }
-
-        return userList;
+    } catch (IOException e) {
+        System.err.println("Error reading the file: " + e.getMessage());
+    } catch (Exception e) {
+        System.err.println("Error parsing the JSON or creating User objects: " + e.getMessage());
     }
+
+    return userList;
+}
+
 public static int signUp(User newUser) {
     ArrayList<User> users = loadUsers();
     int flag = 1;  // Default to 1 (indicating success, user can be added)
@@ -199,13 +229,14 @@ public static int signUp(User newUser) {
 
     // If no duplicate was found, add the new user and save
     if (flag == 1) {
+                              JOptionPane.showMessageDialog(null,"user created succsessfully","message",JOptionPane.NO_OPTION);
+
         for (User u : users) {
             u.setStatus("offline");
         }
         newUser.setStatus("online");
         users.add(newUser);  // Add the new user
         saveUsers(users);     // Save the updated list of users
-                              JOptionPane.showMessageDialog(null,"account created succsesfully","message",JOptionPane.NO_OPTION);
 
     }
 
