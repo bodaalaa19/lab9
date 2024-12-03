@@ -130,7 +130,7 @@
         "email": "abdo"
     },
     {
-        "Status": "offline",
+        "Status": "online",
         "hashedPassword": "ypeBEsobvcr6wjGzmiPcTaeG7/gUfE5yuYB3ha/uSLs=",
         "profile": {
             "profilePhoto": "ghvh",
@@ -208,7 +208,7 @@
         "email": "bbb@gmail.com"
     },
     {
-        "Status": "online",
+        "Status": "offline",
         "hashedPassword": "m4cVEjJ8Cc6R3WSbP5amO3QI7yZ8jMVxARTmKXMMth8=",
         "profile": {
             "profilePhoto": "ghvh",
@@ -219,5 +219,18 @@
         "userName": "rr",
         "userId": "rrrr",
         "email": "rr@gmail.com"
+    },
+    {
+        "Status": "online",
+        "hashedPassword": "n+Cc23ZZNcXEsJXSk6aI6cagtxhu+IgMWZul+end+SY=",
+        "profile": {
+            "profilePhoto": "C:\\Users\\Victus\\Pictures\\Saved Pictures\\photo_2024-11-06_15-22-21.jpg",
+            "coverPhoto": "hhh",
+            "bio": "bodaaa"
+        },
+        "dateOfBirth": "2024-01-01",
+        "userName": "boda",
+        "userId": "boda",
+        "email": "boda"
     }
 ]
