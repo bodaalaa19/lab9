@@ -10,61 +10,90 @@ import static java.awt.PageAttributes.MediaType.C;
 import java.io.File;
 import java.security.NoSuchAlgorithmException;
 import java.text.ParseException;
+import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.ImageIcon;
 import javax.swing.JFileChooser;
+import javax.swing.JOptionPane;
 
 /**
  *
  * @author shams
  */
 public class ProfilePage extends javax.swing.JFrame {
-
+    
+    changePassword changepassword;
     private User user;
     /**
      * Creates new form ProfilePage
      */
-    private static final String DEFAULT_COVER_PICTURE_PATH = "C:\\Users\\Victus\\Documents\\GitHub\\lab9\\src\\main\\java\\com\\mycompany\\lab99\\defaultCover.jpg";
-
+    private static final String DEFAULT_COVER_PICTURE_PATH = "C:\\School\\College\\Programming ll\\projects\\lab9\\src\\main\\java\\com\\mycompany\\lab99\\defaultCover.jpg";
+    
     private static final String DEFAULT_PROFILE_PICTURE_PATH
-            = "C:\\Users\\Victus\\Documents\\GitHub\\lab9\\src\\main\\java\\com\\mycompany\\lab99\\defaultProfile.jpg";
-
+            = "C:\\School\\College\\Programming ll\\projects\\lab9\\src\\main\\java\\com\\mycompany\\lab99\\defaultProfile.jpg";
+    
     public ProfilePage(User user) {
         initComponents();
         this.user = user;
-        if (user.getProfile().getCoverPhoto().equals("hhh")) {
-            setDefaultProfilePicture();
-        }
-        if (user.getProfile().getProfilePhoto().equals("ghvh")) {
-            setDefaultCoverPhoto();
-        }
+        this.changepassword = null;
+        
+        setProfilePicture();
+        setCoverPhoto();
+        setBio();
+        
     }
+    
+    private void setProfilePicture() {
+        String path;
 
-    private void setDefaultProfilePicture() {
-        File file = new File(DEFAULT_PROFILE_PICTURE_PATH);
+        //fetches stored profile picture
+        if (this.user.getProfile().getProfilePhoto().equals("ghvh")) {
+            path = DEFAULT_PROFILE_PICTURE_PATH;
+        } else {
+            path = this.user.getProfile().getProfilePhoto();
+        }
+        
+        File file = new File(path);
         if (file.exists()) {
-            ImageIcon icon = new ImageIcon(DEFAULT_PROFILE_PICTURE_PATH);
+            ImageIcon icon = new ImageIcon(path);
             Image img = icon.getImage();
             Image scaledImg = img.getScaledInstance(92, 85, Image.SCALE_DEFAULT);
-            profilePhoto.setIcon(new ImageIcon(scaledImg));
+            this.profilePhoto.setIcon(new ImageIcon(scaledImg));
         } else {
-            System.err.println("Default profile picture not found at: " + DEFAULT_PROFILE_PICTURE_PATH);
+            System.err.println("Profile picture not found at: " + path);
         }
     }
+    
+    private void setCoverPhoto() {
+        String path;
 
-    private void setDefaultCoverPhoto() {
-        File file = new File(DEFAULT_COVER_PICTURE_PATH);
+        //fetches stored cover picture
+        if (this.user.getProfile().getCoverPhoto().equals("hhh")) {
+            path = DEFAULT_COVER_PICTURE_PATH;
+        } else {
+            path = this.user.getProfile().getCoverPhoto();
+        }
+        
+        File file = new File(path);
         if (file.exists()) {
-            ImageIcon icon = new ImageIcon(DEFAULT_COVER_PICTURE_PATH);
+            ImageIcon icon = new ImageIcon(path);
             Image img = icon.getImage();
             Image scaledImg = img.getScaledInstance(302, 85, Image.SCALE_DEFAULT);
-            coverPhoto.setIcon(new ImageIcon(scaledImg));
+            this.coverPhoto.setIcon(new ImageIcon(scaledImg));
         } else {
-            System.err.println("Default cover photo not found at: " + DEFAULT_COVER_PICTURE_PATH);
+            System.err.println("Profile picture not found at: " + path);
         }
     }
-
+    
+    private void setBio() {
+        if (this.user.getProfile().getBio().equals("hfc")) {
+            this.bio.setText("add bio");
+        } else {
+            this.bio.setText(this.user.getProfile().getBio());
+        }
+    }
+    
     private ProfilePage() {
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
@@ -101,10 +130,20 @@ public class ProfilePage extends javax.swing.JFrame {
             }
         });
 
-        bio.setBackground(new java.awt.Color(0, 0, 0));
+        bio.setBackground(new java.awt.Color(255, 255, 255));
         bio.setOpaque(true);
+        bio.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                changeBio(evt);
+            }
+        });
 
-        editProfileButton.setText("Edit profile");
+        editProfileButton.setText("Change password");
+        editProfileButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                editProfileButtonActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -141,10 +180,20 @@ public class ProfilePage extends javax.swing.JFrame {
         File f = x.getSelectedFile();
         ImageIcon i = new ImageIcon(f.getAbsolutePath());
         Image img = i.getImage();
-         Image scaledImg = img.getScaledInstance(92, 85, Image.SCALE_DEFAULT);
-         
+        Image scaledImg = img.getScaledInstance(92, 85, Image.SCALE_DEFAULT);
+        
         ImageIcon scaledIcon = new ImageIcon(scaledImg);
-        profilePhoto.setIcon(scaledIcon);
+        this.profilePhoto.setIcon(scaledIcon);
+        
+        ArrayList<User> users = User.loadUsers();
+        
+        for (User user : users) {
+            if (user.getUsername().equals(this.user.getUsername())) {
+                user.getProfile().setProfilePhoto(f.getAbsolutePath());
+            }
+        }
+        
+        User.saveUsers(users);
     }//GEN-LAST:event_changeProfilePhoto
 
     private void changeCoverPhoto(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_changeCoverPhoto
@@ -157,8 +206,46 @@ public class ProfilePage extends javax.swing.JFrame {
         Image scaledImg = img.getScaledInstance(303, 85, Image.SCALE_DEFAULT);
         
         ImageIcon scaledIcon = new ImageIcon(scaledImg);
-        coverPhoto.setIcon(scaledIcon);
+        this.coverPhoto.setIcon(scaledIcon);
+        
+        ArrayList<User> users = User.loadUsers();
+        
+        for (User user : users) {
+            if (user.getUsername().equals(this.user.getUsername())) {
+                user.getProfile().setCoverPhoto(f.getAbsolutePath());
+            }
+        }
+        
+        User.saveUsers(users);
     }//GEN-LAST:event_changeCoverPhoto
+
+    private void changeBio(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_changeBio
+        String info;
+        info = JOptionPane.showInputDialog(null, "Enter new bio:", "Input Dialog", JOptionPane.PLAIN_MESSAGE);
+        
+        if (info != null) {
+            this.bio.setText(info);
+            
+            ArrayList<User> users = User.loadUsers();
+            
+            for (User user : users) {
+                if (user.getUsername().equals(this.user.getUsername())) {
+                    user.getProfile().setBio(info);
+                }
+            }
+            
+            User.saveUsers(users);
+        } else {
+            System.out.println("No input provided or dialog was canceled.");
+        }
+    }//GEN-LAST:event_changeBio
+
+    private void editProfileButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_editProfileButtonActionPerformed
+if(this.changepassword==null)
+    this.changepassword=new changePassword(this.user);
+this.changepassword.setVisible(true);
+
+    }//GEN-LAST:event_editProfileButtonActionPerformed
 
     /**
      * @param args the command line arguments
