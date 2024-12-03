@@ -9,6 +9,7 @@ import java.security.NoSuchAlgorithmException;
 import java.text.ParseException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -151,7 +152,12 @@ public class SignUpScreen extends javax.swing.JFrame {
         
         try {
             User user=new User(id, email, username, password, date);
-           signUp(user);
+           if(signUp(user)==1){
+           this.dispose();
+           LoginScreen loginScreen=new LoginScreen();
+           loginScreen.setVisible(true);}
+           else{                              
+}
           
         } catch (NoSuchAlgorithmException ex) {
             Logger.getLogger(SignUpScreen.class.getName()).log(Level.SEVERE, null, ex);

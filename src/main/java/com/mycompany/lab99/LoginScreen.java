@@ -4,10 +4,13 @@
  */
 package com.mycompany.lab99;
 
+import static com.mycompany.lab99.User.loadUsers;
 import static com.mycompany.lab99.User.login;
 import java.security.NoSuchAlgorithmException;
+import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -46,6 +49,12 @@ public class LoginScreen extends javax.swing.JFrame {
         jLabel2.setBackground(new java.awt.Color(255, 255, 255));
         jLabel2.setText("Enter your password:");
         jLabel2.setOpaque(true);
+
+        LoginUsername.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                LoginUsernameActionPerformed(evt);
+            }
+        });
 
         LoginBtn.setBackground(new java.awt.Color(204, 255, 255));
         LoginBtn.setText("Login");
@@ -100,9 +109,28 @@ public class LoginScreen extends javax.swing.JFrame {
         try {
             String hashed=User.hashPassword(password);
              try {
-            if(login(username,hashed)){
+            if(login(username,password)){
                 System.out.println("succsess");
-            }else System.out.println("fail");
+                    ArrayList<User> users = loadUsers();
+// Find user object with the given username
+            User loggedInUser = null;
+            for (User user : users) {
+                if (user.getUsername().equals(username)) { // Assuming getUsername() method in User class
+                    loggedInUser = user;
+                    break;
+                }
+            }
+                                          JOptionPane.showMessageDialog(null,"Loged in succsesfully","message",JOptionPane.NO_OPTION);
+
+            ProfilePage profilePage=new ProfilePage(loggedInUser);
+            this.dispose();
+            profilePage.setVisible(true);
+            
+            }else {
+                                              JOptionPane.showMessageDialog(null,"invalid username or password","message",JOptionPane.ERROR_MESSAGE);
+
+                
+                System.out.println("fail");}
         } catch (NoSuchAlgorithmException ex) {
             Logger.getLogger(LoginScreen.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -111,6 +139,10 @@ public class LoginScreen extends javax.swing.JFrame {
         }
        
     }//GEN-LAST:event_LoginBtnLoginAction
+
+    private void LoginUsernameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_LoginUsernameActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_LoginUsernameActionPerformed
 
     /**
      * @param args the command line arguments

@@ -6,6 +6,7 @@ package com.mycompany.lab99;
 
 import com.mycompany.lab99.User;
 import java.awt.Image;
+import static java.awt.PageAttributes.MediaType.C;
 import java.io.File;
 import java.security.NoSuchAlgorithmException;
 import java.text.ParseException;
@@ -19,13 +20,49 @@ import javax.swing.JFileChooser;
  * @author shams
  */
 public class ProfilePage extends javax.swing.JFrame {
-private User user;
+
+    private User user;
     /**
      * Creates new form ProfilePage
      */
+    private static final String DEFAULT_COVER_PICTURE_PATH = "C:\\Users\\Victus\\Documents\\GitHub\\lab9\\src\\main\\java\\com\\mycompany\\lab99\\defaultCover.jpg";
+
+    private static final String DEFAULT_PROFILE_PICTURE_PATH
+            = "C:\\Users\\Victus\\Documents\\GitHub\\lab9\\src\\main\\java\\com\\mycompany\\lab99\\defaultProfile.jpg";
+
     public ProfilePage(User user) {
         initComponents();
         this.user = user;
+        if (user.getProfile().getCoverPhoto().equals("hhh")) {
+            setDefaultProfilePicture();
+        }
+        if (user.getProfile().getProfilePhoto().equals("ghvh")) {
+            setDefaultCoverPhoto();
+        }
+    }
+
+    private void setDefaultProfilePicture() {
+        File file = new File(DEFAULT_PROFILE_PICTURE_PATH);
+        if (file.exists()) {
+            ImageIcon icon = new ImageIcon(DEFAULT_PROFILE_PICTURE_PATH);
+            Image img = icon.getImage();
+            Image scaledImg = img.getScaledInstance(92, 85, Image.SCALE_DEFAULT);
+            profilePhoto.setIcon(new ImageIcon(scaledImg));
+        } else {
+            System.err.println("Default profile picture not found at: " + DEFAULT_PROFILE_PICTURE_PATH);
+        }
+    }
+
+    private void setDefaultCoverPhoto() {
+        File file = new File(DEFAULT_COVER_PICTURE_PATH);
+        if (file.exists()) {
+            ImageIcon icon = new ImageIcon(DEFAULT_COVER_PICTURE_PATH);
+            Image img = icon.getImage();
+            Image scaledImg = img.getScaledInstance(302, 85, Image.SCALE_DEFAULT);
+            coverPhoto.setIcon(new ImageIcon(scaledImg));
+        } else {
+            System.err.println("Default cover photo not found at: " + DEFAULT_COVER_PICTURE_PATH);
+        }
     }
 
     private ProfilePage() {
@@ -99,24 +136,27 @@ private User user;
     }// </editor-fold>//GEN-END:initComponents
 
     private void changeProfilePhoto(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_changeProfilePhoto
-        JFileChooser x=new JFileChooser();
+        JFileChooser x = new JFileChooser();
         x.showOpenDialog(this);
-        File f =x.getSelectedFile();
-        ImageIcon i=new ImageIcon(f.getAbsolutePath());
-        Image img=i.getImage();
-        Image scaledImg=img.getScaledInstance(92,85,Image.SCALE_DEFAULT);
-        ImageIcon scaledIcon=new ImageIcon(scaledImg);
+        File f = x.getSelectedFile();
+        ImageIcon i = new ImageIcon(f.getAbsolutePath());
+        Image img = i.getImage();
+         Image scaledImg = img.getScaledInstance(92, 85, Image.SCALE_DEFAULT);
+         
+        ImageIcon scaledIcon = new ImageIcon(scaledImg);
         profilePhoto.setIcon(scaledIcon);
     }//GEN-LAST:event_changeProfilePhoto
 
     private void changeCoverPhoto(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_changeCoverPhoto
-        JFileChooser x=new JFileChooser();
+        JFileChooser x = new JFileChooser();
         x.showOpenDialog(this);
-        File f =x.getSelectedFile();
-        ImageIcon i=new ImageIcon(f.getAbsolutePath());
-        Image img=i.getImage();
-        Image scaledImg=img.getScaledInstance(303,85,Image.SCALE_DEFAULT);
-        ImageIcon scaledIcon=new ImageIcon(scaledImg);
+        File f = x.getSelectedFile();
+        ImageIcon i = new ImageIcon(f.getAbsolutePath());
+        Image img = i.getImage();
+        
+        Image scaledImg = img.getScaledInstance(303, 85, Image.SCALE_DEFAULT);
+        
+        ImageIcon scaledIcon = new ImageIcon(scaledImg);
         coverPhoto.setIcon(scaledIcon);
     }//GEN-LAST:event_changeCoverPhoto
 
@@ -150,22 +190,15 @@ private User user;
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                try {
-                    new ProfilePage(new User("test userId", "test email", "test username", "test password", "12-12-2024")).setVisible(true);
-                } catch (NoSuchAlgorithmException ex) {
-                    Logger.getLogger(ProfilePage.class.getName()).log(Level.SEVERE, null, ex);
-                } catch (ParseException ex) {
-                    Logger.getLogger(ProfilePage.class.getName()).log(Level.SEVERE, null, ex);
-                }
+                new ProfilePage().setVisible(true);
             }
         });
     }
-
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel bio;
     private javax.swing.JLabel coverPhoto;
     private javax.swing.JButton editProfileButton;
     private javax.swing.JLabel profilePhoto;
     // End of variables declaration//GEN-END:variables
-}
 
+}
