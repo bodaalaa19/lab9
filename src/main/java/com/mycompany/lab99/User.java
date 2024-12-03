@@ -30,6 +30,7 @@ public class User {
     private String hashedPassword;
     private Date dateOfBirth;
     private String status;
+    private String pass;
 
     // Date formatter
     private static final DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
@@ -39,6 +40,7 @@ public class User {
         this.userId = userId;
         this.email = email;
         this.username = username;
+        this.pass=password;
         this.hashedPassword = hashPassword(password); // Hash the password
         this.dateOfBirth = dateFormat.parse(dateOfBirth); // Parse the date
         this.status = "offline";
@@ -47,6 +49,9 @@ public class User {
     // Getters and Setters
     public String getUserId() {
         return userId;
+    }
+     public String getpass() {
+        return pass;
     }
 
     public String getEmail() {
@@ -131,7 +136,6 @@ public class User {
            try (FileWriter file = new FileWriter("users.json")) {
             file.write(userArray.toString(4)); //  print with an indentation of 4 spaces
             file.flush();
-            System.out.println("Users successfully saved to users.json!");
         } catch (IOException e) {
             System.err.println("Error writing to file: " + e.getMessage());
         }
@@ -165,7 +169,6 @@ public class User {
                 userList.add(user);
             }
 
-            System.out.println("Users successfully loaded from users.json!");
 
         } catch (IOException e) {
             System.err.println("Error reading the file: " + e.getMessage());
@@ -196,9 +199,21 @@ public static int signUp(User newUser) {
 
     return flag;  // Return the flag indicating success (1) or failure (0)
 }
-
-        
+public static Boolean login(String name, String pass) throws NoSuchAlgorithmException {
+    int x=8;
+    ArrayList<User> users = loadUsers(); // Load users from the file
+    String hashedInputPassword = hashPassword(pass); // Hash the input password
+    
+    // Iterate through the users to find a matching username and hashed password
+    for (User u : users) {
+        if (u.getUsername().equalsIgnoreCase(name) && u.getHashedPassword().equals(hashedInputPassword)) {
+            return true; // Login successful
+        }
     }
+    return  false;
+    //
+    // Login failed
+} }
 
     
 
