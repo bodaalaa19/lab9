@@ -50,6 +50,12 @@ public class LoginScreen extends javax.swing.JFrame {
         jLabel2.setText("Enter your password:");
         jLabel2.setOpaque(true);
 
+        LoginUsername.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                LoginUsernameActionPerformed(evt);
+            }
+        });
+
         LoginBtn.setBackground(new java.awt.Color(204, 255, 255));
         LoginBtn.setText("Login");
         LoginBtn.addActionListener(new java.awt.event.ActionListener() {
@@ -133,6 +139,10 @@ public class LoginScreen extends javax.swing.JFrame {
         }
        
     }//GEN-LAST:event_LoginBtnLoginAction
+
+    private void LoginUsernameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_LoginUsernameActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_LoginUsernameActionPerformed
 
     /**
      * @param args the command line arguments
