@@ -104,7 +104,9 @@ private User user;
         File f =x.getSelectedFile();
         ImageIcon i=new ImageIcon(f.getAbsolutePath());
         Image img=i.getImage();
+
         Image scaledImg=img.getScaledInstance(92,85,Image.SCALE_DEFAULT);
+
         ImageIcon scaledIcon=new ImageIcon(scaledImg);
         profilePhoto.setIcon(scaledIcon);
     }//GEN-LAST:event_changeProfilePhoto
@@ -115,7 +117,9 @@ private User user;
         File f =x.getSelectedFile();
         ImageIcon i=new ImageIcon(f.getAbsolutePath());
         Image img=i.getImage();
+
         Image scaledImg=img.getScaledInstance(302,85,Image.SCALE_DEFAULT);
+
         ImageIcon scaledIcon=new ImageIcon(scaledImg);
         coverPhoto.setIcon(scaledIcon);
     }//GEN-LAST:event_changeCoverPhoto
@@ -148,6 +152,7 @@ private User user;
         //</editor-fold>
 
         /* Create and display the form */
+
         java.awt.EventQueue.invokeLater(new Runnable() {public void run() {
                 try {
                     new ProfilePage(new User("test userId", "test email", "test username", "test password", "12-12-2024")).setVisible(true);
