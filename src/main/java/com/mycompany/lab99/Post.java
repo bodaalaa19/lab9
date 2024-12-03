@@ -21,22 +21,21 @@ public class Post extends Content{
         posts=new ArrayList<>();
     }
     
-    public void createPost(User user){
+    public void createPost(User user, String src, String postContent){
         Post post=new Post();
-        Scanner sc=new Scanner(System.in);
         String userId=user.getUserId();
         LocalDateTime ldt=LocalDateTime.now();
         LocalDateTime formattedTime=LocalDateTime.parse(ldt.format(formatter), formatter);
-        String content;
-        content=sc.nextLine();
         post.setContentId("P"+postCounter++);
+        post.setContent(postContent);
         post.setUserId(userId);
         post.setTimeStamp(formattedTime);
-        post.setContent(content);
+        post.setImageSource(src);
         posts.add(post);
+        user.setPosts(posts);
     }
     
-    public void savePosts(ArrayList<Post> posts){
+    /*public void savePosts(ArrayList<Post> posts){
         JSONArray postArray=new JSONArray();
         for(Post post : posts){
            JSONObject j=new JSONObject();
@@ -53,7 +52,7 @@ public class Post extends Content{
         } catch (IOException e) {
             System.err.println("Error writing to file: " + e.getMessage());
         }
-    }
+    }*/
     
     
     
