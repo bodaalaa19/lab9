@@ -9,12 +9,18 @@ package com.mycompany.lab99;
  * @author Victus
  */
 public class MainScreen extends javax.swing.JFrame {
-
+private static MainScreen m=null;
     /**
      * Creates new form MainScreen
      */
-    public MainScreen() {
+    private MainScreen() {
         initComponents();
+    }
+    public static MainScreen getInstance(){
+    if(m==null){
+    m=new MainScreen();
+    }
+    return m;
     }
 
     /**

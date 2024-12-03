@@ -235,7 +235,7 @@ public static int signUp(User newUser) {
         for (User u : users) {
             u.setStatus("offline");
         }
-        newUser.setStatus("online");
+        newUser.setStatus("offline");
         users.add(newUser);  // Add the new user
         saveUsers(users);     // Save the updated list of users
 

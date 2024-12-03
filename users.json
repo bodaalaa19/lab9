@@ -130,7 +130,7 @@
         "email": "abdo"
     },
     {
-        "Status": "online",
+        "Status": "offline",
         "hashedPassword": "ypeBEsobvcr6wjGzmiPcTaeG7/gUfE5yuYB3ha/uSLs=",
         "profile": {
             "profilePhoto": "ghvh",
@@ -221,7 +221,7 @@
         "email": "rr@gmail.com"
     },
     {
-        "Status": "online",
+        "Status": "offline",
         "hashedPassword": "n+Cc23ZZNcXEsJXSk6aI6cagtxhu+IgMWZul+end+SY=",
         "profile": {
             "profilePhoto": "C:\\Users\\Victus\\Pictures\\Saved Pictures\\photo_2024-11-06_15-22-21.jpg",
@@ -232,5 +232,83 @@
         "userName": "boda",
         "userId": "boda",
         "email": "boda"
+    },
+    {
+        "Status": "offline",
+        "hashedPassword": "LPJNul+wow4m6DsqxbninhsWHlwfp0JecwQzYpOLmCQ=",
+        "profile": {
+            "profilePhoto": "C:\\Users\\Victus\\Pictures\\Saved Pictures\\photo_2024-11-06_15-25-09.jpg",
+            "coverPhoto": "C:\\Users\\Victus\\Pictures\\Screenshots\\Screenshot (2).png",
+            "bio": "heyyyy"
+        },
+        "dateOfBirth": "2024-01-01",
+        "userName": "hey",
+        "userId": "hey",
+        "email": "hey"
+    },
+    {
+        "Status": "offline",
+        "hashedPassword": "oPdpSO3x6VboNp87hQUY10S4BHP7fNi5JSTONqgZZUw=",
+        "profile": {
+            "profilePhoto": "ghvh",
+            "coverPhoto": "hhh",
+            "bio": "hfc"
+        },
+        "dateOfBirth": "2024-01-01",
+        "userName": "hha",
+        "userId": "hha",
+        "email": "ahh"
+    },
+    {
+        "Status": "offline",
+        "hashedPassword": "rKyGwOYJypBvYysOLazMsrd9IrBiHyDr7OGkg1uT9vA=",
+        "profile": {
+            "profilePhoto": "ghvh",
+            "coverPhoto": "hhh",
+            "bio": "hfc"
+        },
+        "dateOfBirth": "2024-01-01",
+        "userName": "l",
+        "userId": "l",
+        "email": "l"
+    },
+    {
+        "Status": "offline",
+        "hashedPassword": "3ju9D9eUXkJYFkOxjN8o3T7WHZw9VBt7AWCBVktlo/M=",
+        "profile": {
+            "profilePhoto": "C:\\Users\\Victus\\Pictures\\Saved Pictures\\photo_2024-11-06_15-21-14.jpg",
+            "coverPhoto": "hhh",
+            "bio": "alo"
+        },
+        "dateOfBirth": "2024-01-01",
+        "userName": "j",
+        "userId": "j",
+        "email": "j"
+    },
+    {
+        "Status": "offline",
+        "hashedPassword": "glTDKakoUPbVOd03b0gW7idkUX2l4CNVFK9DMWRIDXo=",
+        "profile": {
+            "profilePhoto": "ghvh",
+            "coverPhoto": "hhh",
+            "bio": "hfc"
+        },
+        "dateOfBirth": "2024-01-01",
+        "userName": "k",
+        "userId": "k",
+        "email": "k"
+    },
+    {
+        "Status": "offline",
+        "hashedPassword": "ungWv48Bz+pBQUDeXa4iI7ADYaOWF3qctBD/YfIAFa0=",
+        "profile": {
+            "profilePhoto": "ghvh",
+            "coverPhoto": "hhh",
+            "bio": "hfc"
+        },
+        "dateOfBirth": "2024-01-01",
+        "userName": "abc",
+        "userId": "abc",
+        "email": "abc"
     }
 ]
