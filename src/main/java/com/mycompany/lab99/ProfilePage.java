@@ -113,6 +113,9 @@ public class ProfilePage extends javax.swing.JFrame {
         bio = new javax.swing.JLabel();
         editProfileButton = new javax.swing.JButton();
         LogoutButton = new javax.swing.JButton();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        myPostsList = new javax.swing.JList<>();
+        viewMyPostBtn = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -155,6 +158,22 @@ public class ProfilePage extends javax.swing.JFrame {
             }
         });
 
+        myPostsList.setBackground(new java.awt.Color(255, 51, 204));
+        myPostsList.setModel(new javax.swing.AbstractListModel<String>() {
+            String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
+            public int getSize() { return strings.length; }
+            public String getElementAt(int i) { return strings[i]; }
+        });
+        jScrollPane1.setViewportView(myPostsList);
+
+        viewMyPostBtn.setBackground(new java.awt.Color(255, 102, 153));
+        viewMyPostBtn.setText("view post");
+        viewMyPostBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                viewMyPostBtnActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -162,7 +181,7 @@ public class ProfilePage extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addComponent(profilePhoto, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(coverPhoto, javax.swing.GroupLayout.DEFAULT_SIZE, 302, Short.MAX_VALUE))
+                .addComponent(coverPhoto, javax.swing.GroupLayout.DEFAULT_SIZE, 325, Short.MAX_VALUE))
             .addGroup(layout.createSequentialGroup()
                 .addComponent(bio, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -170,7 +189,11 @@ public class ProfilePage extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGap(17, 17, 17)
                 .addComponent(LogoutButton)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(1, 1, 1)
+                .addComponent(viewMyPostBtn)
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -182,9 +205,20 @@ public class ProfilePage extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(editProfileButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(bio, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 139, Short.MAX_VALUE)
-                .addComponent(LogoutButton)
-                .addGap(24, 24, 24))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 164, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap(10, Short.MAX_VALUE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                .addComponent(LogoutButton)
+                                .addGap(24, 24, 24))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                .addComponent(viewMyPostBtn)
+                                .addGap(23, 23, 23))))))
         );
 
         pack();
@@ -279,6 +313,10 @@ this.changepassword.setVisible(true);
         this.setVisible(false);
     }//GEN-LAST:event_LogoutButtonActionPerformed
 
+    private void viewMyPostBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_viewMyPostBtnActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_viewMyPostBtnActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -318,7 +356,10 @@ this.changepassword.setVisible(true);
     private javax.swing.JLabel bio;
     private javax.swing.JLabel coverPhoto;
     private javax.swing.JButton editProfileButton;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JList<String> myPostsList;
     private javax.swing.JLabel profilePhoto;
+    private javax.swing.JButton viewMyPostBtn;
     // End of variables declaration//GEN-END:variables
 
 }
