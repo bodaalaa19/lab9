@@ -6,5 +6,9 @@
     {
         "receiver": "best",
         "sender": "oo"
+    },
+    {
+        "receiver": "oo",
+        "sender": "best"
     }
 ]
