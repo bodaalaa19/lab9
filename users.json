@@ -273,11 +273,15 @@
         "email": "l"
     },
     {
-        "Status": "offline",
-        "hashedPassword": "3ju9D9eUXkJYFkOxjN8o3T7WHZw9VBt7AWCBVktlo/M=",
+        "Status": "online",
+        "hashedPassword": "svyprzGq5pUxJEOd9bwwDB7xH7i+k4rrVwdnxba/2q8=",
         "profile": {
             "profilePhoto": "C:\\Users\\Victus\\Pictures\\Saved Pictures\\photo_2024-11-06_15-21-14.jpg",
+<<<<<<< HEAD
             "coverPhoto": "C:\\Users\\Victus\\Pictures\\Saved Pictures\\photo_2024-11-06_15-21-14.jpg",
+=======
+            "coverPhoto": "C:\\Users\\Victus\\Pictures\\Screenshots\\Screenshot 2024-11-08 182544.png",
+>>>>>>> main
             "bio": "alo"
         },
         "dateOfBirth": "2024-01-01",
