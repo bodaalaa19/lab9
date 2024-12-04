@@ -221,7 +221,7 @@
         "email": "rr@gmail.com"
     },
     {
-        "Status": "offline",
+        "Status": "online",
         "hashedPassword": "n+Cc23ZZNcXEsJXSk6aI6cagtxhu+IgMWZul+end+SY=",
         "profile": {
             "profilePhoto": "C:\\Users\\Victus\\Pictures\\Saved Pictures\\photo_2024-11-06_15-22-21.jpg",
@@ -277,11 +277,7 @@
         "hashedPassword": "svyprzGq5pUxJEOd9bwwDB7xH7i+k4rrVwdnxba/2q8=",
         "profile": {
             "profilePhoto": "C:\\Users\\Victus\\Pictures\\Saved Pictures\\photo_2024-11-06_15-21-14.jpg",
-<<<<<<< HEAD
             "coverPhoto": "C:\\Users\\Victus\\Pictures\\Saved Pictures\\photo_2024-11-06_15-21-14.jpg",
-=======
-            "coverPhoto": "C:\\Users\\Victus\\Pictures\\Screenshots\\Screenshot 2024-11-08 182544.png",
->>>>>>> main
             "bio": "alo"
         },
         "dateOfBirth": "2024-01-01",
@@ -290,7 +286,7 @@
         "email": "j"
     },
     {
-        "Status": "offline",
+        "Status": "online",
         "hashedPassword": "glTDKakoUPbVOd03b0gW7idkUX2l4CNVFK9DMWRIDXo=",
         "profile": {
             "profilePhoto": "ghvh",
@@ -306,7 +302,7 @@
         "Status": "offline",
         "hashedPassword": "ungWv48Bz+pBQUDeXa4iI7ADYaOWF3qctBD/YfIAFa0=",
         "profile": {
-            "profilePhoto": "ghvh",
+            "profilePhoto": "C:\\Users\\Victus\\Pictures\\Saved Pictures\\photo_2024-11-06_15-22-21.jpg",
             "coverPhoto": "hhh",
             "bio": "hfc"
         },

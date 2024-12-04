@@ -23,9 +23,10 @@ import javax.swing.JOptionPane;
  * @author shams
  */
 public class ProfilePage extends javax.swing.JFrame {
-    
+
     changePassword changepassword;
     private User user;
+
     /**
      * Creates new form ProfilePage
      */
@@ -33,18 +34,22 @@ public class ProfilePage extends javax.swing.JFrame {
     
     private static final String DEFAULT_PROFILE_PICTURE_PATH
             = "C:\\Users\\Victus\\Documents\\GitHub\\lab9\\src\\main\\java\\com\\mycompany\\lab99\\defaultProfile.jpg";
-    
+
     public ProfilePage(User user) {
         initComponents();
         this.user = user;
         this.changepassword = null;
-        
+                    ArrayList<Post> posts=Post.loadPostsForUser(user.getUserId());
+
         setProfilePicture();
         setCoverPhoto();
         setBio();
+        
                 DefaultListModel<String> listModel = new DefaultListModel<>();
-                            listModel.addElement("alo");
-                                                        listModel.addElement("alo");
+                       for (Post p : posts) {
+                                        listModel.addElement(p.getContent());
+
+        }
 
                             myPostsList.setModel(listModel);
                             
@@ -335,6 +340,13 @@ this.changepassword.setVisible(true);
 
     private void viewMyPostBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_viewMyPostBtnActionPerformed
         // TODO add your handling code here:
+            ArrayList<Post> posts2=Post.loadPostsForUser(user.getUserId());
+
+        int index=myPostsList.getSelectedIndex();
+        Post p=posts2.get(index);
+        ViewPost viewPost=new ViewPost(p);
+        viewPost.setVisible(true);
+        
     }//GEN-LAST:event_viewMyPostBtnActionPerformed
 
     /**
