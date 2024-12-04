@@ -39,13 +39,13 @@ public class Lab99 {
 //   deleteRequest("best","oo");
 //acceptRequest("oo", "alii");
 //declineRequest("oo", "best");
-//sendRequest("alii","oo");
+sendRequest("alii","oo");
 //        sendRequest("best", "oo");
 //ArrayList<String> s=viewRequestSenders("oo");
 //        for (String string : s) {
 //            System.out.println(string);
 //        }
-acceptRequest("alii", "oo");
+//acceptRequest("best", "oo");
 
        
     

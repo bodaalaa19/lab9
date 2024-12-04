@@ -2,7 +2,6 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-<<<<<<< Updated upstream
 
 package com.mycompany.lab99;
 
@@ -136,17 +135,11 @@ public static ArrayList<String> viewRequestSenders(String userId) {
     }
 
     return senderIds; // Return the list of sender IDs
-}
+}}
 
-=======
-package com.mycompany.lab99;
 
 /**
  *
  * @author al-aqsa
  */
-public class Friends {
-    
-    
->>>>>>> Stashed changes
-}
+
