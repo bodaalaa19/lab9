@@ -6,6 +6,7 @@
 package com.mycompany.lab99;
 
 import static com.mycompany.lab99.FriendRequest.loadRequests;
+import static com.mycompany.lab99.User.loadUsers;
 import java.io.File;
 import java.io.FileReader;
 import java.io.FileWriter;
@@ -135,11 +136,55 @@ public static ArrayList<String> viewRequestSenders(String userId) {
     }
 
     return senderIds; // Return the list of sender IDs
-}}
+}
+public static ArrayList<User>search(String username){
+    ArrayList<User> users=loadUsers();
+    ArrayList<User> result =new ArrayList<>();
+    for (User u : users){
+        if (u.getUsername().startsWith(username)){
+            
+            result.add(u);
+        }
+        
+        
+        
+    }
+    return result;
+}
+// view friends 
+public static ArrayList<User> viewFriends(String userId) {
+    ArrayList<User> friends = new ArrayList<>();
+    ArrayList<JSONObject> friendsList = loadFriends(); 
+    ArrayList<User> allUsers = loadUsers(); 
+
+    for (JSONObject friendship : friendsList) {
+        String user1 = friendship.getString("user1");
+        String user2 = friendship.getString("user2");
+
+        if (user1.equals(userId)) {
+            for (User user : allUsers) {
+                if (user.getUserId().equals(user2)) {
+                    friends.add(user); 
+                    break;
+                }
+            }
+        } else if (user2.equals(userId)) {
+            for (User user : allUsers) {
+                if (user.getUserId().equals(user1)) {
+                    friends.add(user); 
+                    break;
+                }
+            }
+        }
+    }
+int x=8;
+    return friends; 
+}
 
 
-/**
- *
- * @author al-aqsa
- */
+
+}
+
+
+
 
