@@ -274,10 +274,10 @@
     },
     {
         "Status": "offline",
-        "hashedPassword": "3ju9D9eUXkJYFkOxjN8o3T7WHZw9VBt7AWCBVktlo/M=",
+        "hashedPassword": "svyprzGq5pUxJEOd9bwwDB7xH7i+k4rrVwdnxba/2q8=",
         "profile": {
             "profilePhoto": "C:\\Users\\Victus\\Pictures\\Saved Pictures\\photo_2024-11-06_15-21-14.jpg",
-            "coverPhoto": "hhh",
+            "coverPhoto": "C:\\Users\\Victus\\Pictures\\Saved Pictures\\photo_2024-11-06_15-21-14.jpg",
             "bio": "alo"
         },
         "dateOfBirth": "2024-01-01",
@@ -302,7 +302,7 @@
         "Status": "offline",
         "hashedPassword": "ungWv48Bz+pBQUDeXa4iI7ADYaOWF3qctBD/YfIAFa0=",
         "profile": {
-            "profilePhoto": "ghvh",
+            "profilePhoto": "C:\\Users\\Victus\\Pictures\\Saved Pictures\\photo_2024-11-06_15-22-21.jpg",
             "coverPhoto": "hhh",
             "bio": "hfc"
         },
@@ -310,5 +310,18 @@
         "userName": "abc",
         "userId": "abc",
         "email": "abc"
+    },
+    {
+        "Status": "online",
+        "hashedPassword": "j0N17GXCxAkqHMIednEkcurg3pmThOgyfElZVxIducI=",
+        "profile": {
+            "profilePhoto": "C:\\Users\\Victus\\Downloads\\dice-images\\dice-3.png",
+            "coverPhoto": "hhh",
+            "bio": "hfc"
+        },
+        "dateOfBirth": "2024-01-01",
+        "userName": "best",
+        "userId": "best",
+        "email": "best"
     }
 ]
