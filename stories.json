@@ -40,5 +40,19 @@
         "userId": "oo",
         "content": "this is my second story",
         "timestamp": "04-12-2024 17:22"
+    },
+    {
+        "storyId": "story372287256",
+        "imagesrc": "C:\\Users\\Victus\\Pictures\\Screenshots\\Screenshot (2).png",
+        "userId": "oo",
+        "content": "third test story",
+        "timestamp": "04-12-2024 18:04"
+    },
+    {
+        "storyId": "story1743534538",
+        "imagesrc": "C:\\Users\\Victus\\Downloads\\duck.png",
+        "userId": "oo",
+        "content": "4th story",
+        "timestamp": "04-12-2024 18:05"
     }
 ]

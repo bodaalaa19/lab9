@@ -51,13 +51,19 @@
                   <Component id="jLabel3" max="32767" attributes="0"/>
               </Group>
               <EmptySpace max="-2" attributes="0"/>
-              <Component id="viewMyStoryBtn" min="-2" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Component id="viewMyStoryBtn" min="-2" max="-2" attributes="0"/>
+                  <Component id="AddMyStory" min="-2" max="-2" attributes="0"/>
+              </Group>
               <EmptySpace type="unrelated" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" attributes="0">
                       <Component id="jScrollPane1" min="-2" pref="135" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
-                      <Component id="viewMyPostBtn" min="-2" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Component id="viewMyPostBtn" min="-2" max="-2" attributes="0"/>
+                          <Component id="AddMyPostBtn" min="-2" max="-2" attributes="0"/>
+                      </Group>
                   </Group>
                   <Component id="jLabel2" min="-2" pref="73" max="-2" attributes="0"/>
               </Group>
@@ -99,11 +105,19 @@
                       <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Component id="jScrollPane1" alignment="1" min="-2" pref="164" max="-2" attributes="0"/>
-                          <Component id="viewMyPostBtn" alignment="1" min="-2" max="-2" attributes="0"/>
+                          <Group type="102" alignment="1" attributes="0">
+                              <Component id="AddMyPostBtn" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace min="-2" pref="22" max="-2" attributes="0"/>
+                              <Component id="viewMyPostBtn" min="-2" max="-2" attributes="0"/>
+                          </Group>
                           <Component id="jScrollPane2" alignment="1" min="-2" pref="164" max="-2" attributes="0"/>
                       </Group>
                   </Group>
-                  <Component id="viewMyStoryBtn" alignment="1" min="-2" max="-2" attributes="0"/>
+                  <Group type="102" alignment="1" attributes="0">
+                      <Component id="AddMyStory" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                      <Component id="viewMyStoryBtn" min="-2" max="-2" attributes="0"/>
+                  </Group>
               </Group>
               <EmptySpace min="-2" pref="23" max="-2" attributes="0"/>
           </Group>
@@ -255,6 +269,28 @@
       <Properties>
         <Property name="text" type="java.lang.String" value="Stories:"/>
       </Properties>
+    </Component>
+    <Component class="javax.swing.JButton" name="AddMyPostBtn">
+      <Properties>
+        <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+          <Color blue="99" green="66" red="ff" type="rgb"/>
+        </Property>
+        <Property name="text" type="java.lang.String" value="Add post"/>
+      </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="AddMyPostBtnActionPerformed"/>
+      </Events>
+    </Component>
+    <Component class="javax.swing.JButton" name="AddMyStory">
+      <Properties>
+        <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+          <Color blue="99" green="66" red="ff" type="rgb"/>
+        </Property>
+        <Property name="text" type="java.lang.String" value="Add story"/>
+      </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="AddMyStoryActionPerformed"/>
+      </Events>
     </Component>
   </SubComponents>
 </Form>
