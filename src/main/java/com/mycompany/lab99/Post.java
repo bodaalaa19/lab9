@@ -13,20 +13,16 @@ import org.json.JSONArray;
 import org.json.JSONObject;
 
 public class Post extends Content{
-    private DateTimeFormatter formatter;
-    //private static int postCounter=0;
     private ArrayList<Post> posts;
     
     public Post() {
-        formatter=DateTimeFormatter.ofPattern("dd-MM-yyyy HH:mm");
         posts=new ArrayList<>();
     }
 
     public Post(String userId, String content, LocalDateTime timeStamp, String imageSource) {
         super(userId, content, timeStamp, imageSource);
-        formatter = DateTimeFormatter.ofPattern("dd-MM-yyyy HH:mm");;
         posts=new ArrayList<>();
-        Random random=new Random();
+        Random random=new Random(); //generates random ids for posts
         setContentId("post"+random.nextInt(Integer.MAX_VALUE));
     }
     
@@ -38,7 +34,7 @@ public class Post extends Content{
             j.put("postId",post.getContentId());
             j.put("userId",post.getUserId());
             j.put("content",post.getContent());
-            j.put("timestamp",post.getTimeStamp());
+            j.put("timestamp",post.getTimeStamp().format(getFormatter()));
             j.put("imagesrc",post.getImageSource());
             postArray.put(j);
         }
@@ -70,7 +66,7 @@ public class Post extends Content{
                 String postId = userJson.getString("postId");
                 String userId = userJson.getString("userId");
                 String content = userJson.getString("content");
-                LocalDateTime timestamp = LocalDateTime.parse(userJson.getString("timestamp"));
+                LocalDateTime timestamp = LocalDateTime.parse(userJson.getString("timestamp"),getFormatter());
                 String imagesrc = userJson.getString("imagesrc");
 
                 // Create a Post object
@@ -89,9 +85,10 @@ public class Post extends Content{
     }
     
     public static ArrayList<Post> loadPostsForUser(String userId){
-        ArrayList<Post> allPosts=loadPosts();
-        ArrayList<Post> userPosts=new ArrayList<>();
+        ArrayList<Post> allPosts=loadPosts(); //arraylist containing all posts
+        ArrayList<Post> userPosts=new ArrayList<>(); //empty arraylist for user posts
         for(int i=0;i<allPosts.size();i++){
+             //adds post in arraylist if userid matchs userid stored in post
             if(allPosts.get(i).getUserId().equals(userId)){
                 userPosts.add(allPosts.get(i));
             }

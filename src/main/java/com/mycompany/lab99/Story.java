@@ -4,6 +4,7 @@ import static com.mycompany.lab99.Post.loadPosts;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.time.Duration;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
@@ -14,7 +15,6 @@ import org.json.JSONArray;
 import org.json.JSONObject;
 
 public class Story extends Content{
-    private DateTimeFormatter formatter;
     private ArrayList<Story> stories;
     
     public Story() {
@@ -22,9 +22,8 @@ public class Story extends Content{
 
     public Story(String userId, String content, LocalDateTime timeStamp, String imageSource) {
         super(userId, content, timeStamp, imageSource);
-        formatter = DateTimeFormatter.ofPattern("dd-MM-yyyy HH:mm");;
         stories=new ArrayList<>();
-        Random random=new Random();
+        Random random=new Random(); //generates random ids for stories
         setContentId("story"+random.nextInt(Integer.MAX_VALUE));
     }
     
@@ -36,7 +35,7 @@ public class Story extends Content{
             j.put("storyId",story.getContentId());
             j.put("userId",story.getUserId());
             j.put("content",story.getContent());
-            j.put("timestamp",story.getTimeStamp());
+            j.put("timestamp",story.getTimeStamp().format(getFormatter()));
             j.put("imagesrc",story.getImageSource());
             storyArray.put(j);
         }
@@ -69,7 +68,7 @@ public class Story extends Content{
                 String storyId = userJson.getString("storyId");
                 String userId = userJson.getString("userId");
                 String content = userJson.getString("content");
-                LocalDateTime timestamp = LocalDateTime.parse(userJson.getString("timestamp"));
+                LocalDateTime timestamp = LocalDateTime.parse(userJson.getString("timestamp"),getFormatter());
                 String imagesrc = userJson.getString("imagesrc");
 
                 // Create a Post object
@@ -89,9 +88,10 @@ public class Story extends Content{
     
     
     public static ArrayList<Story> loadStoriesForUser(String userId){
-        ArrayList<Story> allStories=loadStories();
-        ArrayList<Story> userStories=new ArrayList<>();
+        ArrayList<Story> allStories=loadStories(); //arraylist containing all stories
+        ArrayList<Story> userStories=new ArrayList<>(); //empty arraylist for user stories
         for(int i=0;i<allStories.size();i++){
+            //adds story in arraylist if userid matchs userid stored in story
             if(allStories.get(i).getUserId().equals(userId)){
                 userStories.add(allStories.get(i));
             }
@@ -101,11 +101,15 @@ public class Story extends Content{
     
     
     public static void deleteStories(){
-        ArrayList<Story> stories=loadStories();
-        ArrayList<Story> updated=new ArrayList<>();
-        for(int i=0;i<stories.size();i++){
-            if(!(stories.get(i).getTimeStamp().plusHours(24).isBefore(LocalDateTime.now()))){
-                updated.add(stories.get(i));
+        ArrayList<Story> stories=loadStories(); //arraylist containing all stories
+        ArrayList<Story> updated=new ArrayList<>(); //empty arraylist 
+        for(Story s: stories){
+            //checks if story time exceeds 24 hours
+            Duration duration=Duration.between(LocalDateTime.now(), s.getTimeStamp());
+            long hrs=duration.toHours();
+            if(hrs<24){
+                //adds story in new array if its time doesnt exceed 34 hours
+                updated.add(s);
             }
         }
         saveStories(updated);

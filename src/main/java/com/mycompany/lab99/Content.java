@@ -10,6 +10,7 @@ public class Content {
     private String content;
     private LocalDateTime timeStamp;
     private String imageSource;
+    private static DateTimeFormatter formatter=DateTimeFormatter.ofPattern("dd-MM-yyyy HH:mm");
 
     public Content() {
         
@@ -18,7 +19,7 @@ public class Content {
     public Content(String userId, String content, LocalDateTime timeStamp, String imageSource) {
         this.userId = userId;
         this.content = content;
-        this.timeStamp = timeStamp;
+        this.timeStamp = LocalDateTime.parse(timeStamp.format(formatter), formatter);;
         this.imageSource = imageSource;
     }
     
@@ -53,7 +54,7 @@ public class Content {
     }
 
     public void setTimeStamp(LocalDateTime timeStamp) {
-        this.timeStamp = timeStamp;
+        this.timeStamp = LocalDateTime.parse(timeStamp.format(formatter), formatter);
     }
 
     public String getImageSource() {
@@ -62,6 +63,10 @@ public class Content {
 
     public void setImageSource(String imageSource) {
         this.imageSource = imageSource;
+    }
+
+    public static DateTimeFormatter getFormatter() {
+        return formatter;
     }
 
     @Override
