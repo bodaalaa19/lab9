@@ -42,6 +42,7 @@ public class ProfilePage extends javax.swing.JFrame {
         this.user = user;
         this.changepassword = null;
                     ArrayList<Post> posts=Post.loadPostsForUser(user.getUserId());
+                                        Story.deleteStories();
                     ArrayList<Story> stories=Story.loadStoriesForUser(user.getUserId());
 
         setProfilePicture();
