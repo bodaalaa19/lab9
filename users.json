@@ -221,7 +221,7 @@
         "email": "rr@gmail.com"
     },
     {
-        "Status": "online",
+        "Status": "offline",
         "hashedPassword": "n+Cc23ZZNcXEsJXSk6aI6cagtxhu+IgMWZul+end+SY=",
         "profile": {
             "profilePhoto": "C:\\Users\\Victus\\Pictures\\Saved Pictures\\photo_2024-11-06_15-22-21.jpg",
@@ -286,7 +286,7 @@
         "email": "j"
     },
     {
-        "Status": "online",
+        "Status": "offline",
         "hashedPassword": "glTDKakoUPbVOd03b0gW7idkUX2l4CNVFK9DMWRIDXo=",
         "profile": {
             "profilePhoto": "ghvh",
@@ -310,5 +310,18 @@
         "userName": "abc",
         "userId": "abc",
         "email": "abc"
+    },
+    {
+        "Status": "online",
+        "hashedPassword": "j0N17GXCxAkqHMIednEkcurg3pmThOgyfElZVxIducI=",
+        "profile": {
+            "profilePhoto": "C:\\Users\\Victus\\Downloads\\dice-images\\dice-3.png",
+            "coverPhoto": "hhh",
+            "bio": "hfc"
+        },
+        "dateOfBirth": "2024-01-01",
+        "userName": "best",
+        "userId": "best",
+        "email": "best"
     }
 ]

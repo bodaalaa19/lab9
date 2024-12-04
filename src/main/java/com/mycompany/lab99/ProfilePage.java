@@ -23,9 +23,9 @@ import javax.swing.JOptionPane;
  * @author shams
  */
 public class ProfilePage extends javax.swing.JFrame {
-
     changePassword changepassword;
     private User user;
+
 
     /**
      * Creates new form ProfilePage
@@ -36,6 +36,8 @@ public class ProfilePage extends javax.swing.JFrame {
             = "C:\\Users\\Victus\\Documents\\GitHub\\lab9\\src\\main\\java\\com\\mycompany\\lab99\\defaultProfile.jpg";
 
     public ProfilePage(User user) {
+        setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
+
         initComponents();
         this.user = user;
         this.changepassword = null;
@@ -346,7 +348,7 @@ this.changepassword.setVisible(true);
         Post p=posts2.get(index);
         ViewPost viewPost=new ViewPost(p);
         viewPost.setVisible(true);
-        
+       
     }//GEN-LAST:event_viewMyPostBtnActionPerformed
 
     /**

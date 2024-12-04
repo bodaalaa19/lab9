@@ -18,6 +18,7 @@ public class ViewPost extends javax.swing.JFrame {
      */
     Post p;
     public ViewPost(Post post) {
+setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
         initComponents();
         this.p=post;
         updateData();
@@ -33,6 +34,7 @@ ImageIcon scaledIcon=new ImageIcon(scaledImg);
 PhotoField.setIcon(scaledIcon);}
 
 }
+
 private ViewPost(){}
     /**
      * This method is called from within the constructor to initialize the form.
