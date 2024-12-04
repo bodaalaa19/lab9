@@ -4,7 +4,12 @@
 
 package com.mycompany.lab99;
 
+import static com.mycompany.lab99.FriendRequest.deleteRequest;
 import static com.mycompany.lab99.FriendRequest.sendRequest;
+import static com.mycompany.lab99.Friends.acceptRequest;
+import static com.mycompany.lab99.Friends.declineRequest;
+import static com.mycompany.lab99.Friends.removeFriendship;
+import static com.mycompany.lab99.Friends.viewRequestSenders;
 import static com.mycompany.lab99.Post.loadPosts;
 import static com.mycompany.lab99.Post.savePosts;
 import static com.mycompany.lab99.Story.loadStories;
@@ -29,24 +34,9 @@ import org.json.JSONObject;
 public class Lab99 {
 
     public static void main(String[] args) throws ParseException, NoSuchAlgorithmException {
-        try {
-    
+        
+   deleteRequest("4","5");
+        sendRequest("j","k"); 
 
-
-       boolean x=sendRequest("oo","alii");
-
-if(x){System.out.println("Saved");
-       
-    }else{
-    
-    System.out.println("error");
 }
-        }
-        
-        catch (Exception e) {
-        e.printStackTrace();
-        
-        
-        
-}}
 }
