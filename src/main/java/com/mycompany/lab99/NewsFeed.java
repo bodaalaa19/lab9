@@ -4,6 +4,8 @@
  */
 package com.mycompany.lab99;
 
+import static com.mycompany.lab99.FriendRequest.sendRequest;
+import static com.mycompany.lab99.Friends.search;
 import static com.mycompany.lab99.Friends.viewRequestSenders;
 import java.util.ArrayList;
 import javax.swing.DefaultListModel;
@@ -53,7 +55,7 @@ FriendReqList.setModel(listModel);
         idText = new javax.swing.JTextField();
         SearchBtn = new javax.swing.JButton();
         jScrollPane6 = new javax.swing.JScrollPane();
-        myFriendsList3 = new javax.swing.JList<>();
+        searchList = new javax.swing.JList<>();
         AddFriendBtn = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -129,14 +131,14 @@ FriendReqList.setModel(listModel);
         });
 
         SearchBtn.setText("Search");
-
-        myFriendsList3.setBackground(new java.awt.Color(255, 51, 204));
-        myFriendsList3.setModel(new javax.swing.AbstractListModel<String>() {
-            String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
-            public int getSize() { return strings.length; }
-            public String getElementAt(int i) { return strings[i]; }
+        SearchBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                SearchBtnActionPerformed(evt);
+            }
         });
-        jScrollPane6.setViewportView(myFriendsList3);
+
+        searchList.setBackground(new java.awt.Color(255, 51, 204));
+        jScrollPane6.setViewportView(searchList);
 
         AddFriendBtn.setBackground(new java.awt.Color(255, 204, 204));
         AddFriendBtn.setText("Add friend");
@@ -277,7 +279,27 @@ Friends.declineRequest(sss, LoginScreen.activeUser.getUserId());
 
     private void AddFriendBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AddFriendBtnActionPerformed
         // TODO add your handling code here:
+        User l=null;
+        String s=searchList.getSelectedValue();
+        ArrayList<User> A=User.loadUsers();
+        for (User user : A) {
+            if(s.equals(user.getUsername())){
+                 l=user;
+            break;}
+        }
+        sendRequest(LoginScreen.activeUser.getUserId(),l.getUserId() );
     }//GEN-LAST:event_AddFriendBtnActionPerformed
+
+    private void SearchBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SearchBtnActionPerformed
+        // TODO add your handling code here:
+        ArrayList<User> a=search(idText.getText());
+                                DefaultListModel<String> listModel2 = new DefaultListModel<>();
+                                for (User user : a) {
+            listModel2.addElement(user.getUsername());
+        }
+searchList.setModel(listModel2);
+    
+    }//GEN-LAST:event_SearchBtnActionPerformed
 
     /**
      * @param args the command line arguments
@@ -333,6 +355,6 @@ Friends.declineRequest(sss, LoginScreen.activeUser.getUserId());
     private javax.swing.JScrollPane jScrollPane4;
     private javax.swing.JScrollPane jScrollPane5;
     private javax.swing.JScrollPane jScrollPane6;
-    private javax.swing.JList<String> myFriendsList3;
+    private javax.swing.JList<String> searchList;
     // End of variables declaration//GEN-END:variables
 }

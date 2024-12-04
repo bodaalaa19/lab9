@@ -55,7 +55,7 @@ public class Lab99 {
 //        sendRequest("best", "alii");
         sendRequest("j", "best");
                 sendRequest("best", "best");
-                                sendRequest("oo", "best");
+                        sendRequest("oo", "best");
 
 //                acceptRequest("j", "alii");
 //       ArrayList<String>s= viewRequestSenders("alii");
