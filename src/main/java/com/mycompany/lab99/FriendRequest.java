@@ -102,6 +102,29 @@ public static boolean sendRequest(String senderId, String receiverId) {
 
     return true;
 }
+//function to delete requests
+public static boolean deleteRequest(String senderId, String receiverId) {
+    ArrayList<JSONObject> requests = loadRequests(); 
+    boolean requestFound = false;
+
+    
+    for (int i = 0; i < requests.size(); i++) {
+        JSONObject request = requests.get(i);
+        if (request.getString("sender").equals(senderId) && request.getString("receiver").equals(receiverId)) {
+            requests.remove(i); 
+            requestFound = true;
+            break; 
+        }
+    }
+
+    // Save the updated list of requests to the file
+    if (requestFound) {
+        saveRequests(requests);
+    }
+
+    return requestFound; 
+}
+
 
 
 }
