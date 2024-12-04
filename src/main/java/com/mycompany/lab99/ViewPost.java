@@ -49,10 +49,19 @@ private ViewPost(){}
         TimeField = new javax.swing.JLabel();
         ContentField = new javax.swing.JLabel();
         PhotoField = new javax.swing.JLabel();
+        ReturnBtn = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jLabel1.setText("Time:");
+
+        ReturnBtn.setBackground(new java.awt.Color(102, 255, 255));
+        ReturnBtn.setText("Return to profile");
+        ReturnBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ReturnBtnActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -69,11 +78,17 @@ private ViewPost(){}
                             .addGap(52, 52, 52)
                             .addComponent(TimeField, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
                 .addContainerGap(80, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(ReturnBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 152, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(38, 38, 38))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(32, 32, 32)
+                .addContainerGap()
+                .addComponent(ReturnBtn)
+                .addGap(3, 3, 3)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, 24, Short.MAX_VALUE)
                     .addComponent(TimeField, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
@@ -86,6 +101,12 @@ private ViewPost(){}
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void ReturnBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ReturnBtnActionPerformed
+        // TODO add your handling code here:
+        this.setVisible(false);
+        ProfilePage p=new ProfilePage(LoginScreen.activeUser);
+    }//GEN-LAST:event_ReturnBtnActionPerformed
 
     /**
      * @param args the command line arguments
@@ -125,6 +146,7 @@ private ViewPost(){}
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel ContentField;
     private javax.swing.JLabel PhotoField;
+    private javax.swing.JButton ReturnBtn;
     private javax.swing.JLabel TimeField;
     private javax.swing.JLabel jLabel1;
     // End of variables declaration//GEN-END:variables

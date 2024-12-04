@@ -381,7 +381,7 @@ this.changepassword.setVisible(true);
 
     private void viewMyPostBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_viewMyPostBtnActionPerformed
         // TODO add your handling code here:
-            ArrayList<Post> posts2=Post.loadPostsForUser(LoginScreen.activeUser.getUserId());
+            ArrayList<Post> posts2=Post.loadPostsForUser(user.getUserId());
 
         int index=myPostsList.getSelectedIndex();
         Post p=posts2.get(index);
