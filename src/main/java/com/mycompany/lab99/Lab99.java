@@ -47,7 +47,10 @@ public class Lab99 {
 //        for (String string : s) {
 //            System.out.println(string);
 //        }
-acceptRequest("alii", "oo");
+//acceptRequest("alii", "oo");
+sendRequest("oo", "best");
+        sendRequest("alii", "best");
+sendRequest("j", "best");
 
        
     

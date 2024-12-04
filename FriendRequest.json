@@ -1,10 +1,14 @@
 [
     {
-        "receiver": "k",
-        "sender": "j"
+        "receiver": "best",
+        "sender": "oo"
     },
     {
-        "receiver": "oo",
-        "sender": "best"
+        "receiver": "best",
+        "sender": "alii"
+    },
+    {
+        "receiver": "best",
+        "sender": "j"
     }
 ]

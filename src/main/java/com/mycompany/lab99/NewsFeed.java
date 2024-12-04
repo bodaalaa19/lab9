@@ -4,6 +4,10 @@
  */
 package com.mycompany.lab99;
 
+import static com.mycompany.lab99.Friends.viewRequestSenders;
+import java.util.ArrayList;
+import javax.swing.DefaultListModel;
+
 /**
  *
  * @author Victus
@@ -15,6 +19,12 @@ public class NewsFeed extends javax.swing.JFrame {
      */
     public NewsFeed() {
         initComponents();
+                        DefaultListModel<String> listModel = new DefaultListModel<>();
+ArrayList<String> s=viewRequestSenders("best");
+        for (String string : s) {
+            listModel.addElement(string);
+        }
+FriendReqList.setModel(listModel);
     }
 
     /**
@@ -28,12 +38,12 @@ public class NewsFeed extends javax.swing.JFrame {
 
         BackToProfileBtn = new javax.swing.JButton();
         jScrollPane3 = new javax.swing.JScrollPane();
-        myFriendsList = new javax.swing.JList<>();
+        FriendReqList = new javax.swing.JList<>();
         jLabel1 = new javax.swing.JLabel();
         jScrollPane4 = new javax.swing.JScrollPane();
-        myFriendsList1 = new javax.swing.JList<>();
+        FriendsPostsList = new javax.swing.JList<>();
         jScrollPane5 = new javax.swing.JScrollPane();
-        myFriendsList2 = new javax.swing.JList<>();
+        FriendsStoriesList = new javax.swing.JList<>();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         ApproveBtn = new javax.swing.JButton();
@@ -56,31 +66,31 @@ public class NewsFeed extends javax.swing.JFrame {
             }
         });
 
-        myFriendsList.setBackground(new java.awt.Color(255, 51, 204));
-        myFriendsList.setModel(new javax.swing.AbstractListModel<String>() {
+        FriendReqList.setBackground(new java.awt.Color(255, 51, 204));
+        FriendReqList.setModel(new javax.swing.AbstractListModel<String>() {
             String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
             public int getSize() { return strings.length; }
             public String getElementAt(int i) { return strings[i]; }
         });
-        jScrollPane3.setViewportView(myFriendsList);
+        jScrollPane3.setViewportView(FriendReqList);
 
         jLabel1.setText("Friends request:");
 
-        myFriendsList1.setBackground(new java.awt.Color(255, 51, 204));
-        myFriendsList1.setModel(new javax.swing.AbstractListModel<String>() {
+        FriendsPostsList.setBackground(new java.awt.Color(255, 51, 204));
+        FriendsPostsList.setModel(new javax.swing.AbstractListModel<String>() {
             String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
             public int getSize() { return strings.length; }
             public String getElementAt(int i) { return strings[i]; }
         });
-        jScrollPane4.setViewportView(myFriendsList1);
+        jScrollPane4.setViewportView(FriendsPostsList);
 
-        myFriendsList2.setBackground(new java.awt.Color(255, 51, 204));
-        myFriendsList2.setModel(new javax.swing.AbstractListModel<String>() {
+        FriendsStoriesList.setBackground(new java.awt.Color(255, 51, 204));
+        FriendsStoriesList.setModel(new javax.swing.AbstractListModel<String>() {
             String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
             public int getSize() { return strings.length; }
             public String getElementAt(int i) { return strings[i]; }
         });
-        jScrollPane5.setViewportView(myFriendsList2);
+        jScrollPane5.setViewportView(FriendsStoriesList);
 
         jLabel2.setText("Friends posts");
 
@@ -237,10 +247,24 @@ public class NewsFeed extends javax.swing.JFrame {
 
     private void ApproveBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ApproveBtnActionPerformed
         // TODO add your handling code here:
+        String ss=FriendReqList.getSelectedValue();
+//        int index=FriendReqList.getSelectedIndex();
+//        ArrayList<String> s=viewRequestSenders("best");
+//        Friends.acceptRequest(s.get(index), LoginScreen.activeUser.getUserId());
+        Friends.acceptRequest(ss, LoginScreen.activeUser.getUserId());
+
+//this.dispose();
+//this.setVisible(true);
     }//GEN-LAST:event_ApproveBtnActionPerformed
 
     private void DeclineBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_DeclineBtnActionPerformed
         // TODO add your handling code here:
+//                int index=FriendReqList.getSelectedIndex();
+//        ArrayList<String> s=viewRequestSenders("best");
+//        Friends.declineRequest(s.get(index), LoginScreen.activeUser.getUserId
+String sss=FriendReqList.getSelectedValue();
+Friends.declineRequest(sss, LoginScreen.activeUser.getUserId());
+
     }//GEN-LAST:event_DeclineBtnActionPerformed
 
     private void ViewPostBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ViewPostBtnActionPerformed
@@ -295,6 +319,9 @@ public class NewsFeed extends javax.swing.JFrame {
     private javax.swing.JButton ApproveBtn;
     private javax.swing.JButton BackToProfileBtn;
     private javax.swing.JButton DeclineBtn;
+    private javax.swing.JList<String> FriendReqList;
+    private javax.swing.JList<String> FriendsPostsList;
+    private javax.swing.JList<String> FriendsStoriesList;
     private javax.swing.JButton SearchBtn;
     private javax.swing.JButton ViewPostBtn;
     private javax.swing.JButton ViewStoryBtn1;
@@ -306,9 +333,6 @@ public class NewsFeed extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane4;
     private javax.swing.JScrollPane jScrollPane5;
     private javax.swing.JScrollPane jScrollPane6;
-    private javax.swing.JList<String> myFriendsList;
-    private javax.swing.JList<String> myFriendsList1;
-    private javax.swing.JList<String> myFriendsList2;
     private javax.swing.JList<String> myFriendsList3;
     // End of variables declaration//GEN-END:variables
 }
