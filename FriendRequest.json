@@ -1,34 +1,4 @@
-[
-    {
-        "receiver": "53",
-        "sender": "46"
-    },
-    {
-        "receiver": "53",
-        "sender": "46"
-    },
-    {
-        "receiver": "54",
-        "sender": "53"
-    },
-    {
-        "receiver": "abc",
-        "sender": "best"
-    },
-    {
-        "receiver": "alii",
-        "sender": "oo"
-    },
-    {
-        "receiver": "53",
-        "sender": "j"
-    },
-    {
-        "receiver": "53",
-        "sender": "k"
-    },
-    {
-        "receiver": "k",
-        "sender": "j"
-    }
-]
+[{
+    "receiver": "k",
+    "sender": "j"
+}]
