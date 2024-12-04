@@ -33,7 +33,7 @@ public class Lab99 {
     
 
 
-       boolean x=sendRequest("oo","alii");
+       boolean x=sendRequest("oo","best");
 
 if(x){System.out.println("Saved");
        
