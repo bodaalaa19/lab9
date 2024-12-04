@@ -42,6 +42,7 @@ public class ProfilePage extends javax.swing.JFrame {
         this.user = user;
         this.changepassword = null;
                     ArrayList<Post> posts=Post.loadPostsForUser(user.getUserId());
+                    ArrayList<Story> stories=Story.loadStoriesForUser(user.getUserId());
 
         setProfilePicture();
         setCoverPhoto();
@@ -54,6 +55,13 @@ public class ProfilePage extends javax.swing.JFrame {
         }
 
                             myPostsList.setModel(listModel);
+                            DefaultListModel<String> listModel2 = new DefaultListModel<>();
+                       for (Story s : stories) {
+                                        listModel2.addElement(s.getContent());
+
+        }
+
+                            myStoriesList.setModel(listModel2);
                             
 
 
@@ -392,6 +400,11 @@ this.changepassword.setVisible(true);
 
     private void viewMyStoryBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_viewMyStoryBtnActionPerformed
         // TODO add your handling code here:
+                    ArrayList<Story> stories2=Story.loadStoriesForUser(user.getUserId());
+                    int index=myStoriesList.getSelectedIndex();
+                    Story s=stories2.get(index);
+                    ViewStory viewStory=new ViewStory(s);
+                    viewStory.setVisible(true);
     }//GEN-LAST:event_viewMyStoryBtnActionPerformed
 
     /**

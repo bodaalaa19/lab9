@@ -4,6 +4,9 @@
  */
 package com.mycompany.lab99;
 
+import java.awt.Image;
+import javax.swing.ImageIcon;
+
 /**
  *
  * @author Victus
@@ -13,9 +16,24 @@ public class ViewStory extends javax.swing.JFrame {
     /**
      * Creates new form ViewStory
      */
-    public ViewStory() {
+    Story s;
+    public ViewStory(Story story) {
         initComponents();
+        this.s=story;
+        updateStory();
     }
+    public void updateStory(){
+ContentField.setText(s.getContent());
+TimeField.setText(s.getTimeStamp().toString());
+if(!s.getImageSource().equals("null")){
+ImageIcon i=new ImageIcon(s.getImageSource());
+Image img=i.getImage();
+Image scaledImg    =img.getScaledInstance(250, 150, Image.SCALE_DEFAULT);
+ImageIcon scaledIcon=new ImageIcon(scaledImg);
+PhotoField.setIcon(scaledIcon);}
+
+}
+    private ViewStory(){}
 
     /**
      * This method is called from within the constructor to initialize the form.

@@ -4,6 +4,10 @@
 
 package com.mycompany.lab99;
 
+import static com.mycompany.lab99.Post.loadPosts;
+import static com.mycompany.lab99.Post.savePosts;
+import static com.mycompany.lab99.Story.loadStories;
+import static com.mycompany.lab99.Story.saveStories;
 import static com.mycompany.lab99.User.loadUsers;
 import static com.mycompany.lab99.User.saveUsers;
 import static com.mycompany.lab99.User.signUp;
@@ -23,5 +27,16 @@ import java.util.Date;
 public class Lab99 {
 
     public static void main(String[] args) throws ParseException, NoSuchAlgorithmException {
-        
-}}
+//        ArrayList<Post> posts=loadPosts();
+//        Post p=new Post("best", "this is my second post", LocalDateTime.now(), "C:\\Users\\Victus\\Downloads\\user.png");
+//        posts.add(p);
+//savePosts(posts);
+ArrayList<Story> stories=loadStories();
+    Story s=new Story("best","this is my second story",LocalDateTime.now(),"C:\\Users\\Victus\\Downloads\\duck.png");
+      Story s2=new Story("oo","this is my second story",LocalDateTime.now(),"C:\\Users\\Victus\\Downloads\\duck.png");
+
+    stories.add(s);
+        stories.add(s2);
+        saveStories(stories);
+
+    }}
