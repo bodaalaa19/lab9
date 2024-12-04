@@ -23,7 +23,22 @@ import java.util.Date;
 public class Lab99 {
 
     public static void main(String[] args) throws ParseException, NoSuchAlgorithmException {
+        /*ArrayList<Story> stories=new ArrayList<>();
+        Story story1=new Story("bba","storycontenttest1",LocalDateTime.now(),"imagesrc1");
+        Story story2=new Story("bba","storycontenttest2",LocalDateTime.now().plusHours(12),"imagesrc2");
+        Story story3=new Story("bbc","storycontenttest3",LocalDateTime.now().plusHours(24),"imagesrc3");
+        stories.add(story1);
+        stories.add(story2);
+        stories.add(story3);
         
+        Story.saveStories(stories);
+        for(int i=0;i<stories.size();i++){
+            System.out.println(stories.get(i));
+        }*/
         
-        
+        Story.deleteStories();
+        /*ArrayList<Story>stories=Story.loadStories();
+        for(int i=0;i<stories.size();i++){
+            System.out.println(stories.get(i));
+        }*/
 }}
