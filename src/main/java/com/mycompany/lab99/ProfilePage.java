@@ -3,7 +3,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
 package com.mycompany.lab99;
-
+import static com.mycompany.lab99.Friends.viewFriends;
 import com.mycompany.lab99.User;
 import java.awt.Image;
 import static java.awt.PageAttributes.MediaType.C;
@@ -42,7 +42,7 @@ public class ProfilePage extends javax.swing.JFrame {
         this.user = user;
         this.changepassword = null;
                     ArrayList<Post> posts=Post.loadPostsForUser(user.getUserId());
-                                        Story.deleteStories();
+                    Story.deleteStories();
                     ArrayList<Story> stories=Story.loadStoriesForUser(user.getUserId());
 
         setProfilePicture();
@@ -63,9 +63,12 @@ public class ProfilePage extends javax.swing.JFrame {
         }
 
                             myStoriesList.setModel(listModel2);
-                            
-
-
+                                        DefaultListModel<String> listModel3 = new DefaultListModel<>();
+    ArrayList<User> a=viewFriends(LoginScreen.activeUser.getUserId());
+        for (User user1 : a) {
+            listModel3.addElement(user1.getUserId()+" "+user1.getStatus());
+        }
+myFriendsList.setModel(listModel3);
     }
     
     private void setProfilePicture() {
@@ -148,6 +151,10 @@ public class ProfilePage extends javax.swing.JFrame {
         jLabel3 = new javax.swing.JLabel();
         AddMyPostBtn = new javax.swing.JButton();
         AddMyStory = new javax.swing.JButton();
+        jScrollPane3 = new javax.swing.JScrollPane();
+        myFriendsList = new javax.swing.JList<>();
+        jLabel4 = new javax.swing.JLabel();
+        NewsfeedBtn = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -244,6 +251,24 @@ public class ProfilePage extends javax.swing.JFrame {
             }
         });
 
+        myFriendsList.setBackground(new java.awt.Color(255, 51, 204));
+        myFriendsList.setModel(new javax.swing.AbstractListModel<String>() {
+            String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
+            public int getSize() { return strings.length; }
+            public String getElementAt(int i) { return strings[i]; }
+        });
+        jScrollPane3.setViewportView(myFriendsList);
+
+        jLabel4.setText("friends:");
+
+        NewsfeedBtn.setBackground(new java.awt.Color(0, 51, 255));
+        NewsfeedBtn.setText("Newsfeed");
+        NewsfeedBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                NewsfeedBtnActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -253,19 +278,27 @@ public class ProfilePage extends javax.swing.JFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(profilePhoto, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(coverPhoto, javax.swing.GroupLayout.PREFERRED_SIZE, 329, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(editProfileButton)
-                            .addComponent(LogoutButton)))
+                        .addComponent(coverPhoto, javax.swing.GroupLayout.PREFERRED_SIZE, 329, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
                         .addContainerGap()
                         .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(bio, javax.swing.GroupLayout.PREFERRED_SIZE, 328, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(0, 49, Short.MAX_VALUE))
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addComponent(editProfileButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(LogoutButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(NewsfeedBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 133, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(0, 130, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addComponent(jLabel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 135, Short.MAX_VALUE)
                     .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
@@ -287,21 +320,27 @@ public class ProfilePage extends javax.swing.JFrame {
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(profilePhoto, javax.swing.GroupLayout.DEFAULT_SIZE, 85, Short.MAX_VALUE)
                             .addComponent(coverPhoto, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 26, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
                         .addContainerGap()
                         .addComponent(editProfileButton)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(LogoutButton)
-                        .addGap(35, 35, 35)
-                        .addComponent(bio, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 26, Short.MAX_VALUE)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(35, 35, 35)
+                                .addComponent(bio, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(19, 19, 19)
+                                .addComponent(NewsfeedBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 9, Short.MAX_VALUE)))
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
@@ -320,7 +359,11 @@ public class ProfilePage extends javax.swing.JFrame {
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addComponent(AddMyStory)
                         .addGap(18, 18, 18)
-                        .addComponent(viewMyStoryBtn)))
+                        .addComponent(viewMyStoryBtn))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 164, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(23, 23, 23))
         );
 
@@ -450,6 +493,13 @@ this.changepassword.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_AddMyStoryActionPerformed
 
+    private void NewsfeedBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_NewsfeedBtnActionPerformed
+        // TODO add your handling code here:
+        NewsFeed newsFeed=new NewsFeed();
+        newsFeed.setVisible(true);
+        this.setVisible(false);
+    }//GEN-LAST:event_NewsfeedBtnActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -488,14 +538,18 @@ this.changepassword.setVisible(true);
     private javax.swing.JButton AddMyPostBtn;
     private javax.swing.JButton AddMyStory;
     private javax.swing.JButton LogoutButton;
+    private javax.swing.JButton NewsfeedBtn;
     private javax.swing.JLabel bio;
     private javax.swing.JLabel coverPhoto;
     private javax.swing.JButton editProfileButton;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JScrollPane jScrollPane3;
+    private javax.swing.JList<String> myFriendsList;
     private javax.swing.JList<String> myPostsList;
     private javax.swing.JList<String> myStoriesList;
     private javax.swing.JLabel profilePhoto;

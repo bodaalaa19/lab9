@@ -39,11 +39,11 @@
         "email": "abc"
     },
     {
-        "Status": "online",
+        "Status": "offline",
         "hashedPassword": "j0N17GXCxAkqHMIednEkcurg3pmThOgyfElZVxIducI=",
         "profile": {
-            "profilePhoto": "C:\\Users\\Victus\\Downloads\\dice-images\\dice-3.png",
-            "coverPhoto": "C:\\Users\\Victus\\Pictures\\Saved Pictures\\photo_2024-11-06_15-24-23.jpg",
+            "profilePhoto": "C:\\Users\\Victus\\Downloads\\downloaded images\\armchair.png",
+            "coverPhoto": "C:\\Users\\Victus\\Downloads\\downloaded images\\stay-home.png",
             "bio": "bestooooo"
         },
         "dateOfBirth": "2024-01-01",
@@ -68,7 +68,7 @@
         "Status": "offline",
         "hashedPassword": "qMI8yBQXlXjjp3RBisX8RwKmbrO3jIdt+BspBGXm4zQ=",
         "profile": {
-            "profilePhoto": "ghvh",
+            "profilePhoto": "C:\\Users\\Victus\\Downloads\\user.png",
             "coverPhoto": "hhh",
             "bio": "oooo"
         },
@@ -76,44 +76,5 @@
         "userName": "oo",
         "userId": "oo",
         "email": "oo"
-    },
-    {
-        "Status": "offline",
-        "hashedPassword": "75K3eLr+dx6JJFuJ7LwIpEpOFmwGZZkRiB84PURz6U8=",
-        "profile": {
-            "profilePhoto": "ghvh",
-            "coverPhoto": "hhh",
-            "bio": "hfc"
-        },
-        "dateOfBirth": "2000-01-01",
-        "userName": "user1111",
-        "userId": "46",
-        "email": "user1@example.com"
-    },
-    {
-        "Status": "offline",
-        "hashedPassword": "xrqRuQ2SLhWYk/RsOH5dwbPcXBAaWkUi8DuYcXeiSpE=",
-        "profile": {
-            "profilePhoto": "ghvh",
-            "coverPhoto": "hhh",
-            "bio": "hfc"
-        },
-        "dateOfBirth": "1999-01-01",
-        "userName": "user2222",
-        "userId": "54",
-        "email": "user2@example.com"
-    },
-    {
-        "Status": "offline",
-        "hashedPassword": "xrqRuQ2SLhWYk/RsOH5dwbPcXBAaWkUi8DuYcXeiSpE=",
-        "profile": {
-            "profilePhoto": "ghvh",
-            "coverPhoto": "hhh",
-            "bio": "hfc"
-        },
-        "dateOfBirth": "1999-01-01",
-        "userName": "user3333",
-        "userId": "53",
-        "email": "user2@example.com"
     }
 ]

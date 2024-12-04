@@ -12,6 +12,7 @@ import static com.mycompany.lab99.Friends.removeFriendship;
 import static com.mycompany.lab99.Friends.viewRequestSenders;
 import static com.mycompany.lab99.Post.loadPosts;
 import static com.mycompany.lab99.Post.savePosts;
+import static com.mycompany.lab99.Story.deleteStories;
 import static com.mycompany.lab99.Story.loadStories;
 import static com.mycompany.lab99.Story.saveStories;
 import static com.mycompany.lab99.User.loadUsers;
@@ -34,21 +35,38 @@ import org.json.JSONObject;
 public class Lab99 {
 
     public static void main(String[] args) throws ParseException, NoSuchAlgorithmException {
+
 //   sendRequest("oo","best"); 
 //
 //   deleteRequest("best","oo");
 //acceptRequest("oo", "alii");
 //declineRequest("oo", "best");
-sendRequest("alii","oo");
+//sendRequest("j","oo");
 //        sendRequest("best", "oo");
 //ArrayList<String> s=viewRequestSenders("oo");
 //        for (String string : s) {
 //            System.out.println(string);
 //        }
-//acceptRequest("best", "oo");
+//acceptRequest("alii", "oo");
+//sendRequest("oo", "best");
+//        sendRequest("alii", "best");
+//sendRequest("best", "j");
+//sendRequest("best", "oo");
+//        sendRequest("best", "alii");
+        sendRequest("j", "best");
+                sendRequest("best", "best");
+                                sendRequest("oo", "best");
+
+//                acceptRequest("j", "alii");
+//       ArrayList<String>s= viewRequestSenders("alii");
+//        for (String string : s) {
+//            System.out.println(string);
+        }
+//        acceptRequest("j", "alii");
+
+
 
        
     
 
-}
 }
