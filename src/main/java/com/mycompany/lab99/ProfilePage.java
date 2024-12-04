@@ -3,7 +3,6 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
 package com.mycompany.lab99;
-
 import com.mycompany.lab99.User;
 import java.awt.Image;
 import static java.awt.PageAttributes.MediaType.C;
@@ -42,6 +41,7 @@ public class ProfilePage extends javax.swing.JFrame {
         this.user = user;
         this.changepassword = null;
                     ArrayList<Post> posts=Post.loadPostsForUser(user.getUserId());
+                    Story.deleteStories();
                     ArrayList<Story> stories=Story.loadStoriesForUser(user.getUserId());
 
         setProfilePicture();

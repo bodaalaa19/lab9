@@ -61,5 +61,12 @@
         "userId": "best",
         "content": "story test",
         "timestamp": "04-12-2024 18:07"
+    },
+    {
+        "storyId": "story1714500222",
+        "imagesrc": "C:\\Users\\Victus\\Downloads\\dice-images\\dice-2.png",
+        "userId": "oo",
+        "content": "6",
+        "timestamp": "04-12-2024 18:08"
     }
 ]

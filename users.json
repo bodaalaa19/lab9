@@ -65,10 +65,10 @@
         "email": "alii"
     },
     {
-        "Status": "offline",
+        "Status": "online",
         "hashedPassword": "qMI8yBQXlXjjp3RBisX8RwKmbrO3jIdt+BspBGXm4zQ=",
         "profile": {
-            "profilePhoto": "ghvh",
+            "profilePhoto": "C:\\Users\\Victus\\Downloads\\user.png",
             "coverPhoto": "hhh",
             "bio": "oooo"
         },
