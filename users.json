@@ -1,5 +1,4 @@
 [
-    
     {
         "Status": "offline",
         "hashedPassword": "svyprzGq5pUxJEOd9bwwDB7xH7i+k4rrVwdnxba/2q8=",
@@ -40,7 +39,7 @@
         "email": "abc"
     },
     {
-        "Status": "online",
+        "Status": "offline",
         "hashedPassword": "j0N17GXCxAkqHMIednEkcurg3pmThOgyfElZVxIducI=",
         "profile": {
             "profilePhoto": "C:\\Users\\Victus\\Downloads\\dice-images\\dice-3.png",
@@ -53,7 +52,7 @@
         "email": "best"
     },
     {
-        "Status": "online",
+        "Status": "offline",
         "hashedPassword": "nVpFv7jaAFM1GCiVATRQ9loQOrLmyONgRWWTELKKul4=",
         "profile": {
             "profilePhoto": "C:\\Users\\Victus\\Downloads\\eat.png",
@@ -64,5 +63,18 @@
         "userName": "alii",
         "userId": "alii",
         "email": "alii"
+    },
+    {
+        "Status": "online",
+        "hashedPassword": "qMI8yBQXlXjjp3RBisX8RwKmbrO3jIdt+BspBGXm4zQ=",
+        "profile": {
+            "profilePhoto": "ghvh",
+            "coverPhoto": "hhh",
+            "bio": "oooo"
+        },
+        "dateOfBirth": "2024-01-01",
+        "userName": "oo",
+        "userId": "oo",
+        "email": "oo"
     }
 ]
