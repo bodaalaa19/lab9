@@ -3,6 +3,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
 package com.mycompany.lab99;
+import static com.mycompany.lab99.Friends.viewFriends;
 import com.mycompany.lab99.User;
 import java.awt.Image;
 import static java.awt.PageAttributes.MediaType.C;
@@ -62,9 +63,12 @@ public class ProfilePage extends javax.swing.JFrame {
         }
 
                             myStoriesList.setModel(listModel2);
-                            
-
-
+                                        DefaultListModel<String> listModel3 = new DefaultListModel<>();
+    ArrayList<User> a=viewFriends(LoginScreen.activeUser.getUserId());
+        for (User user1 : a) {
+            listModel3.addElement(user1.getUserId()+" "+user1.getStatus());
+        }
+myFriendsList.setModel(listModel3);
     }
     
     private void setProfilePicture() {

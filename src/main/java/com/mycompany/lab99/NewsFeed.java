@@ -20,7 +20,7 @@ public class NewsFeed extends javax.swing.JFrame {
     public NewsFeed() {
         initComponents();
                         DefaultListModel<String> listModel = new DefaultListModel<>();
-ArrayList<String> s=viewRequestSenders("best");
+ArrayList<String> s=viewRequestSenders(LoginScreen.activeUser.getUserId());
         for (String string : s) {
             listModel.addElement(string);
         }

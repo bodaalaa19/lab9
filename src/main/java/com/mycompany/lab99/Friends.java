@@ -167,22 +167,18 @@ public static ArrayList<User> viewFriends(String userId) {
                     friends.add(user); 
                     break;
                 }
-            }
-        } else if (user2.equals(userId)) {
-            for (User user : allUsers) {
-                if (user.getUserId().equals(user1)) {
-                    friends.add(user); 
-                    break;
-                }
-            }
-        }
+            }}
+//        } else if (user2.equals(userId)) {
+//            for (User user : allUsers) {
+//                if (user.getUserId().equals(user1)) {
+//                    friends.add(user); 
+//                    break;
+//                }
+//            }
+//        }
     }
-int x=8;
     return friends; 
 }
-
-
-
 }
 
 
