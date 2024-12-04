@@ -145,6 +145,8 @@ public class ProfilePage extends javax.swing.JFrame {
         myStoriesList = new javax.swing.JList<>();
         viewMyStoryBtn = new javax.swing.JButton();
         jLabel3 = new javax.swing.JLabel();
+        AddMyPostBtn = new javax.swing.JButton();
+        AddMyStory = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -225,6 +227,22 @@ public class ProfilePage extends javax.swing.JFrame {
 
         jLabel3.setText("Stories:");
 
+        AddMyPostBtn.setBackground(new java.awt.Color(255, 102, 153));
+        AddMyPostBtn.setText("Add post");
+        AddMyPostBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                AddMyPostBtnActionPerformed(evt);
+            }
+        });
+
+        AddMyStory.setBackground(new java.awt.Color(255, 102, 153));
+        AddMyStory.setText("Add story");
+        AddMyStory.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                AddMyStoryActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -251,13 +269,17 @@ public class ProfilePage extends javax.swing.JFrame {
                     .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 135, Short.MAX_VALUE)
                     .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(viewMyStoryBtn)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(viewMyStoryBtn)
+                    .addComponent(AddMyStory))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(viewMyPostBtn))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(viewMyPostBtn)
+                            .addComponent(AddMyPostBtn)))
                     .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap())
         );
@@ -289,9 +311,15 @@ public class ProfilePage extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 164, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(viewMyPostBtn, javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                .addComponent(AddMyPostBtn)
+                                .addGap(22, 22, 22)
+                                .addComponent(viewMyPostBtn))
                             .addComponent(jScrollPane2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 164, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addComponent(viewMyStoryBtn, javax.swing.GroupLayout.Alignment.TRAILING))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addComponent(AddMyStory)
+                        .addGap(18, 18, 18)
+                        .addComponent(viewMyStoryBtn)))
                 .addGap(23, 23, 23))
         );
 
@@ -407,6 +435,20 @@ this.changepassword.setVisible(true);
                     viewStory.setVisible(true);
     }//GEN-LAST:event_viewMyStoryBtnActionPerformed
 
+    private void AddMyPostBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AddMyPostBtnActionPerformed
+        // TODO add your handling code here:
+        AddPost addPost=new AddPost();
+        addPost.setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_AddMyPostBtnActionPerformed
+
+    private void AddMyStoryActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AddMyStoryActionPerformed
+        // TODO add your handling code here:
+        AddStory addStory=new AddStory();
+        addStory.setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_AddMyStoryActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -442,6 +484,8 @@ this.changepassword.setVisible(true);
         });
     }
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton AddMyPostBtn;
+    private javax.swing.JButton AddMyStory;
     private javax.swing.JButton LogoutButton;
     private javax.swing.JLabel bio;
     private javax.swing.JLabel coverPhoto;
