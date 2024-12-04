@@ -48,12 +48,6 @@ public class User {
         this.status = "offline";
         this.profile=new Profile();
     }
-      public void setProfile(Profile p) {
-        this.profile=p;
-    }
-      public Profile getProfile() {
-        return this.profile;
-    }
 
     // Getters and Setters
     public String getUserId() {
@@ -109,7 +103,14 @@ public class User {
 
     public void setStatus(String status) {
         this.status = status;
-    }    
+    }
+    
+    public void setProfile(Profile p) {
+        this.profile=p;
+    }
+      public Profile getProfile() {
+        return this.profile;
+    }
 
     @Override
     public String toString() {
@@ -234,7 +235,7 @@ public static int signUp(User newUser) {
         for (User u : users) {
             u.setStatus("offline");
         }
-        newUser.setStatus("online");
+        newUser.setStatus("offline");
         users.add(newUser);  // Add the new user
         saveUsers(users);     // Save the updated list of users
 
@@ -263,7 +264,3 @@ public static Boolean login(String name, String pass) throws NoSuchAlgorithmExce
     //
     // Login failed
 } }
-
-    
-
-
