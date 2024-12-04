@@ -12,5 +12,33 @@
         "userId": "bba",
         "content": "storycontenttest2",
         "timestamp": "05-12-2024 04:42"
+    },
+    {
+        "storyId": "story713202640",
+        "imagesrc": "C:\\Users\\Victus\\Downloads\\user.png",
+        "userId": "best",
+        "content": "this is my first story",
+        "timestamp": "04-12-2024 17:14"
+    },
+    {
+        "storyId": "story933364267",
+        "imagesrc": "C:\\Users\\Victus\\Downloads\\user.png",
+        "userId": "oo",
+        "content": "this is my first story",
+        "timestamp": "04-12-2024 17:14"
+    },
+    {
+        "storyId": "story364185839",
+        "imagesrc": "C:\\Users\\Victus\\Downloads\\duck.png",
+        "userId": "best",
+        "content": "this is my second story",
+        "timestamp": "04-12-2024 17:22"
+    },
+    {
+        "storyId": "story206459547",
+        "imagesrc": "C:\\Users\\Victus\\Downloads\\duck.png",
+        "userId": "oo",
+        "content": "this is my second story",
+        "timestamp": "04-12-2024 17:22"
     }
 ]

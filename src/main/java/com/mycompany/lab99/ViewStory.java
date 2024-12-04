@@ -11,31 +11,30 @@ import javax.swing.ImageIcon;
  *
  * @author Victus
  */
-public class ViewPost extends javax.swing.JFrame {
+public class ViewStory extends javax.swing.JFrame {
 
     /**
-     * Creates new form ViewPost
+     * Creates new form ViewStory
      */
-    Post p;
-    public ViewPost(Post post) {
-setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
+    Story s;
+    public ViewStory(Story story) {
         initComponents();
-        this.p=post;
-        updateData();
+        this.s=story;
+        updateStory();
     }
-public void updateData(){
-ContentField.setText(p.getContent());
-TimeField.setText(p.getTimeStamp().toString());
-if(!p.getImageSource().equals("null")){
-ImageIcon i=new ImageIcon(p.getImageSource());
+    public void updateStory(){
+ContentField.setText(s.getContent());
+TimeField.setText(s.getTimeStamp().toString());
+if(!s.getImageSource().equals("null")){
+ImageIcon i=new ImageIcon(s.getImageSource());
 Image img=i.getImage();
 Image scaledImg    =img.getScaledInstance(250, 150, Image.SCALE_DEFAULT);
 ImageIcon scaledIcon=new ImageIcon(scaledImg);
 PhotoField.setIcon(scaledIcon);}
 
 }
+    private ViewStory(){}
 
-private ViewPost(){}
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -96,7 +95,7 @@ private ViewPost(){}
                 .addComponent(ContentField, javax.swing.GroupLayout.PREFERRED_SIZE, 77, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(PhotoField, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(13, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         pack();
@@ -125,20 +124,20 @@ private ViewPost(){}
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(ViewPost.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ViewStory.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(ViewPost.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ViewStory.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(ViewPost.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ViewStory.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(ViewPost.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ViewStory.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new ViewPost().setVisible(true);
+                new ViewStory().setVisible(true);
             }
         });
     }

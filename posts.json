@@ -19,5 +19,19 @@
         "userId": "bbc",
         "content": "postcontenttest3",
         "timestamp": "05-12-2024 17:48"
+    },
+    {
+        "imagesrc": "C:\\Users\\Victus\\Downloads\\duck.png",
+        "postId": "post173430027",
+        "userId": "best",
+        "content": "this is my first post",
+        "timestamp": "04-12-2024 17:08"
+    },
+    {
+        "imagesrc": "C:\\Users\\Victus\\Downloads\\user.png",
+        "postId": "post1364452195",
+        "userId": "best",
+        "content": "this is my second post",
+        "timestamp": "04-12-2024 17:10"
     }
 ]
