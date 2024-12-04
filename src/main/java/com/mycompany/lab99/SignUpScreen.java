@@ -154,9 +154,11 @@ public class SignUpScreen extends javax.swing.JFrame {
             User user=new User(id, email, username, password, date);
            if(signUp(user)==1){
            this.dispose();
-           LoginScreen loginScreen=new LoginScreen();
-           loginScreen.setVisible(true);}
-           else{                              
+            MainScreen m=MainScreen.getInstance();
+            m.setVisible(true);
+//           LoginScreen loginScreen=new LoginScreen();
+//           loginScreen.setVisible(true);
+           } else{                              
 }
           
         } catch (NoSuchAlgorithmException ex) {

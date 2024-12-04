@@ -33,6 +33,11 @@
               <EmptySpace max="-2" attributes="0"/>
               <Component id="editProfileButton" min="-2" max="-2" attributes="0"/>
           </Group>
+          <Group type="102" alignment="0" attributes="0">
+              <EmptySpace min="-2" pref="17" max="-2" attributes="0"/>
+              <Component id="LogoutButton" min="-2" max="-2" attributes="0"/>
+              <EmptySpace max="32767" attributes="0"/>
+          </Group>
       </Group>
     </DimensionLayout>
     <DimensionLayout dim="1">
@@ -47,7 +52,9 @@
                   <Component id="editProfileButton" max="32767" attributes="0"/>
                   <Component id="bio" max="32767" attributes="0"/>
               </Group>
-              <EmptySpace min="0" pref="186" max="32767" attributes="0"/>
+              <EmptySpace pref="139" max="32767" attributes="0"/>
+              <Component id="LogoutButton" min="-2" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="24" max="-2" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -78,15 +85,32 @@
     <Component class="javax.swing.JLabel" name="bio">
       <Properties>
         <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-          <Color blue="0" green="0" red="0" type="rgb"/>
+          <Color blue="ff" green="ff" red="ff" type="rgb"/>
         </Property>
         <Property name="opaque" type="boolean" value="true"/>
       </Properties>
+      <Events>
+        <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="changeBio"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JButton" name="editProfileButton">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Edit profile"/>
+        <Property name="text" type="java.lang.String" value="Change password"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="editProfileButtonActionPerformed"/>
+      </Events>
+    </Component>
+    <Component class="javax.swing.JButton" name="LogoutButton">
+      <Properties>
+        <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+          <Color blue="99" green="99" red="ff" type="rgb"/>
+        </Property>
+        <Property name="text" type="java.lang.String" value="Logout"/>
+      </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="LogoutButtonActionPerformed"/>
+      </Events>
     </Component>
   </SubComponents>
 </Form>
