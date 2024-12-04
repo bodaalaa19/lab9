@@ -17,7 +17,7 @@ import javax.swing.JOptionPane;
  * @author Victus
  */
 public class LoginScreen extends javax.swing.JFrame {
-
+public static User activeUser;
     /**
      * Creates new form LoginScreen
      */
@@ -117,6 +117,7 @@ public class LoginScreen extends javax.swing.JFrame {
                     for (User user : users) {
                         if (user.getUsername().equals(username)) { // Assuming getUsername() method in User class
                             loggedInUser = user;
+       activeUser=user;                     
                             break;
                         }
                     }
