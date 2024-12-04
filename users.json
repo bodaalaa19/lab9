@@ -39,11 +39,11 @@
         "email": "abc"
     },
     {
-        "Status": "offline",
+        "Status": "online",
         "hashedPassword": "j0N17GXCxAkqHMIednEkcurg3pmThOgyfElZVxIducI=",
         "profile": {
-            "profilePhoto": "C:\\Users\\Victus\\Downloads\\dice-images\\dice-3.png",
-            "coverPhoto": "C:\\Users\\Victus\\Pictures\\Saved Pictures\\photo_2024-11-06_15-24-23.jpg",
+            "profilePhoto": "C:\\Users\\Victus\\Downloads\\downloaded images\\armchair.png",
+            "coverPhoto": "C:\\Users\\Victus\\Downloads\\downloaded images\\stay-home.png",
             "bio": "bestooooo"
         },
         "dateOfBirth": "2024-01-01",
@@ -76,5 +76,18 @@
         "userName": "oo",
         "userId": "oo",
         "email": "oo"
+    },
+    {
+        "Status": "online",
+        "hashedPassword": "mDSHbc+wXLFnpcJJU+uljErImxrfV/KPL50JrxB+6PA=",
+        "profile": {
+            "profilePhoto": "C:\\Users\\Victus\\Downloads\\downloaded images\\penguin.png",
+            "coverPhoto": "C:\\Users\\Victus\\Downloads\\downloaded images\\emoticon.png",
+            "bio": "hfc"
+        },
+        "dateOfBirth": "2024-01-01",
+        "userName": "aa",
+        "userId": "aa",
+        "email": "aa"
     }
 ]
