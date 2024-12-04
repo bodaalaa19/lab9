@@ -39,12 +39,12 @@
         "email": "abc"
     },
     {
-        "Status": "offline",
+        "Status": "online",
         "hashedPassword": "j0N17GXCxAkqHMIednEkcurg3pmThOgyfElZVxIducI=",
         "profile": {
             "profilePhoto": "C:\\Users\\Victus\\Downloads\\dice-images\\dice-3.png",
-            "coverPhoto": "hhh",
-            "bio": "hfc"
+            "coverPhoto": "C:\\Users\\Victus\\Pictures\\Saved Pictures\\photo_2024-11-06_15-24-23.jpg",
+            "bio": "bestooooo"
         },
         "dateOfBirth": "2024-01-01",
         "userName": "best",
