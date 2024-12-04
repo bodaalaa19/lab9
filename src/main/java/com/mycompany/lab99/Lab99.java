@@ -4,7 +4,6 @@
 
 package com.mycompany.lab99;
 
-import static com.mycompany.lab99.Post.loadPosts;
 import static com.mycompany.lab99.User.loadUsers;
 import static com.mycompany.lab99.User.saveUsers;
 import static com.mycompany.lab99.User.signUp;
@@ -24,5 +23,7 @@ import java.util.Date;
 public class Lab99 {
 
     public static void main(String[] args) throws ParseException, NoSuchAlgorithmException {
-       
+        
+        
+        
 }}
