@@ -273,7 +273,7 @@
         "email": "l"
     },
     {
-        "Status": "online",
+        "Status": "offline",
         "hashedPassword": "svyprzGq5pUxJEOd9bwwDB7xH7i+k4rrVwdnxba/2q8=",
         "profile": {
             "profilePhoto": "C:\\Users\\Victus\\Pictures\\Saved Pictures\\photo_2024-11-06_15-21-14.jpg",
@@ -312,7 +312,7 @@
         "email": "abc"
     },
     {
-        "Status": "online",
+        "Status": "offline",
         "hashedPassword": "j0N17GXCxAkqHMIednEkcurg3pmThOgyfElZVxIducI=",
         "profile": {
             "profilePhoto": "C:\\Users\\Victus\\Downloads\\dice-images\\dice-3.png",
@@ -323,5 +323,18 @@
         "userName": "best",
         "userId": "best",
         "email": "best"
+    },
+    {
+        "Status": "online",
+        "hashedPassword": "nVpFv7jaAFM1GCiVATRQ9loQOrLmyONgRWWTELKKul4=",
+        "profile": {
+            "profilePhoto": "C:\\Users\\Victus\\Downloads\\eat.png",
+            "coverPhoto": "hhh",
+            "bio": "hfc"
+        },
+        "dateOfBirth": "2024-01-01",
+        "userName": "alii",
+        "userId": "alii",
+        "email": "alii"
     }
 ]
