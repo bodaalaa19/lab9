@@ -76,18 +76,5 @@
         "userName": "oo",
         "userId": "oo",
         "email": "oo"
-    },
-    {
-        "Status": "online",
-        "hashedPassword": "mDSHbc+wXLFnpcJJU+uljErImxrfV/KPL50JrxB+6PA=",
-        "profile": {
-            "profilePhoto": "C:\\Users\\Victus\\Downloads\\downloaded images\\penguin.png",
-            "coverPhoto": "C:\\Users\\Victus\\Downloads\\downloaded images\\emoticon.png",
-            "bio": "hfc"
-        },
-        "dateOfBirth": "2024-01-01",
-        "userName": "aa",
-        "userId": "aa",
-        "email": "aa"
     }
 ]

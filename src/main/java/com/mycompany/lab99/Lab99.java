@@ -4,6 +4,12 @@
 
 package com.mycompany.lab99;
 
+import static com.mycompany.lab99.FriendRequest.deleteRequest;
+import static com.mycompany.lab99.FriendRequest.sendRequest;
+import static com.mycompany.lab99.Friends.acceptRequest;
+import static com.mycompany.lab99.Friends.declineRequest;
+import static com.mycompany.lab99.Friends.removeFriendship;
+import static com.mycompany.lab99.Friends.viewRequestSenders;
 import static com.mycompany.lab99.Post.loadPosts;
 import static com.mycompany.lab99.Post.savePosts;
 import static com.mycompany.lab99.Story.deleteStories;
@@ -20,6 +26,7 @@ import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.Date;
+import org.json.JSONObject;
 
 /**
  *
@@ -28,16 +35,22 @@ import java.util.Date;
 public class Lab99 {
 
     public static void main(String[] args) throws ParseException, NoSuchAlgorithmException {
-//        ArrayList<Post> posts=loadPosts();
-//        Post p=new Post("best", "this is my second post", LocalDateTime.now(), "C:\\Users\\Victus\\Downloads\\user.png");
-//        posts.add(p);
-//savePosts(posts);
-//ArrayList<Story> stories=deleteStories();
-//    Story s=new Story("best","this is my second story",LocalDateTime.now(),"C:\\Users\\Victus\\Downloads\\duck.png");
-//      Story s2=new Story("oo","this is my second story",LocalDateTime.now(),"C:\\Users\\Victus\\Downloads\\duck.png");
-//
-//    stories.add(s);
-//        stories.add(s2);
-//        saveStories(stories);
 
-    }}
+//   sendRequest("oo","best"); 
+//
+//   deleteRequest("best","oo");
+//acceptRequest("oo", "alii");
+//declineRequest("oo", "best");
+//sendRequest("alii","oo");
+//        sendRequest("best", "oo");
+//ArrayList<String> s=viewRequestSenders("oo");
+//        for (String string : s) {
+//            System.out.println(string);
+//        }
+acceptRequest("alii", "oo");
+
+       
+    
+
+}
+}
