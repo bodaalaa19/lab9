@@ -1,1 +1,18 @@
-[]
+[
+    {
+        "user1": "oo",
+        "user2": "alii"
+    },
+    {
+        "user1": "alii",
+        "user2": "oo"
+    },
+    {
+        "user1": "alii",
+        "user2": "oo"
+    },
+    {
+        "user1": "oo",
+        "user2": "alii"
+    }
+]

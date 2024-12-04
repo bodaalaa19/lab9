@@ -34,11 +34,18 @@ import org.json.JSONObject;
 public class Lab99 {
 
     public static void main(String[] args) throws ParseException, NoSuchAlgorithmException {
-        
-   deleteRequest("4","5");
-        sendRequest("j","k"); 
-
-
+//   sendRequest("oo","best"); 
+//
+//   deleteRequest("best","oo");
+//acceptRequest("oo", "alii");
+//declineRequest("oo", "best");
+//sendRequest("alii","oo");
+//        sendRequest("best", "oo");
+//ArrayList<String> s=viewRequestSenders("oo");
+//        for (String string : s) {
+//            System.out.println(string);
+//        }
+acceptRequest("alii", "oo");
 
        
     
