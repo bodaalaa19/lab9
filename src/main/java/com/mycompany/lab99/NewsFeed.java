@@ -4,11 +4,14 @@
  */
 package com.mycompany.lab99;
 
+import static com.mycompany.lab99.FriendContent.getFriendPosts;
+import static com.mycompany.lab99.FriendContent.getFriendStories;
 import static com.mycompany.lab99.FriendRequest.sendRequest;
 import static com.mycompany.lab99.Friends.search;
 import static com.mycompany.lab99.Friends.viewRequestSenders;
 import java.util.ArrayList;
 import javax.swing.DefaultListModel;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -27,6 +30,21 @@ ArrayList<String> s=viewRequestSenders(LoginScreen.activeUser.getUserId());
             listModel.addElement(string);
         }
 FriendReqList.setModel(listModel);
+                        DefaultListModel<String> listModel2 = new DefaultListModel<>();
+                        ArrayList<Post> posts=getFriendPosts(LoginScreen.activeUser.getUserId());
+                       for (Post post : posts) {
+                           listModel2.addElement(post.getContent());
+            
+        }
+FriendsPostsList.setModel(listModel2);
+                        DefaultListModel<String> listModel3 = new DefaultListModel<>();
+                                            Story.deleteStories();
+
+                        ArrayList<Story> stories=getFriendStories(LoginScreen.activeUser.getUserId());
+        for (Story story : stories) {
+         listModel3.addElement(story.getContent());
+        }
+        FriendsStoriesList.setModel(listModel3);
     }
 
     /**
@@ -57,6 +75,7 @@ FriendReqList.setModel(listModel);
         jScrollPane6 = new javax.swing.JScrollPane();
         searchList = new javax.swing.JList<>();
         AddFriendBtn = new javax.swing.JButton();
+        refresh2 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -148,19 +167,29 @@ FriendReqList.setModel(listModel);
             }
         });
 
+        refresh2.setText("refresh");
+        refresh2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                refresh2ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addGap(12, 12, 12)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(ApproveBtn)
-                    .addComponent(DeclineBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 76, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(ApproveBtn)
+                            .addComponent(DeclineBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 76, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addComponent(refresh2))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -200,14 +229,19 @@ FriendReqList.setModel(listModel);
                         .addComponent(SearchBtn))
                     .addComponent(idText, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(11, 11, 11)
-                        .addComponent(jScrollPane6, javax.swing.GroupLayout.PREFERRED_SIZE, 164, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 24, Short.MAX_VALUE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(AddFriendBtn)
-                        .addGap(39, 39, 39)))
+                        .addGap(39, 39, 39))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(11, 11, 11)
+                                .addComponent(jScrollPane6, javax.swing.GroupLayout.PREFERRED_SIZE, 164, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(18, 18, 18)
+                                .addComponent(refresh2)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 24, Short.MAX_VALUE)))
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
@@ -258,6 +292,7 @@ FriendReqList.setModel(listModel);
 //        ArrayList<String> s=viewRequestSenders("best");
 //        Friends.acceptRequest(s.get(index), LoginScreen.activeUser.getUserId());
         Friends.acceptRequest(ss, LoginScreen.activeUser.getUserId());
+           JOptionPane.showMessageDialog(this, " approved", "approved", JOptionPane.INFORMATION_MESSAGE);
 
 //this.dispose();
 //this.setVisible(true);
@@ -270,15 +305,26 @@ FriendReqList.setModel(listModel);
 //        Friends.declineRequest(s.get(index), LoginScreen.activeUser.getUserId
 String sss=FriendReqList.getSelectedValue();
 Friends.declineRequest(sss, LoginScreen.activeUser.getUserId());
+           JOptionPane.showMessageDialog(this, " Declined", "Declined", JOptionPane.INFORMATION_MESSAGE);
 
     }//GEN-LAST:event_DeclineBtnActionPerformed
 
     private void ViewPostBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ViewPostBtnActionPerformed
         // TODO add your handling code here:
+        ArrayList<Post> posts2=getFriendPosts(LoginScreen.activeUser.getUserId());
+        int index=FriendsPostsList.getSelectedIndex();
+        Post p=posts2.get(index);
+         ViewPost viewPost=new ViewPost(p);
+        viewPost.setVisible(true);
     }//GEN-LAST:event_ViewPostBtnActionPerformed
 
     private void ViewStoryBtn1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ViewStoryBtn1ActionPerformed
         // TODO add your handling code here:
+        ArrayList<Story> story2=getFriendStories(LoginScreen.activeUser.getUserId());
+        int index=FriendsStoriesList.getSelectedIndex();
+        Story s=story2.get(index);
+        ViewStory viewStory=new ViewStory(s);
+                    viewStory.setVisible(true);
     }//GEN-LAST:event_ViewStoryBtn1ActionPerformed
 
     private void AddFriendBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AddFriendBtnActionPerformed
@@ -292,6 +338,8 @@ Friends.declineRequest(sss, LoginScreen.activeUser.getUserId());
             break;}
         }
         sendRequest(LoginScreen.activeUser.getUserId(),l.getUserId() );
+           JOptionPane.showMessageDialog(this, "request sent", "request", JOptionPane.INFORMATION_MESSAGE);
+
     }//GEN-LAST:event_AddFriendBtnActionPerformed
 
     private void SearchBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SearchBtnActionPerformed
@@ -304,6 +352,34 @@ Friends.declineRequest(sss, LoginScreen.activeUser.getUserId());
 searchList.setModel(listModel2);
     
     }//GEN-LAST:event_SearchBtnActionPerformed
+
+    private void refresh2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_refresh2ActionPerformed
+        // TODO add your handling code here:
+         DefaultListModel<String> friendReqModel = new DefaultListModel<>();
+    ArrayList<String> friendRequests = viewRequestSenders(LoginScreen.activeUser.getUserId());
+    for (String request : friendRequests) {
+        friendReqModel.addElement(request);
+    }
+    FriendReqList.setModel(friendReqModel);
+
+    // Refresh Friend Posts
+    DefaultListModel<String> postsModel = new DefaultListModel<>();
+    ArrayList<Post> friendPosts = getFriendPosts(LoginScreen.activeUser.getUserId());
+    for (Post post : friendPosts) {
+        postsModel.addElement(post.getContent());
+    }
+    FriendsPostsList.setModel(postsModel);
+
+    // Refresh Friend Stories
+    DefaultListModel<String> storiesModel = new DefaultListModel<>();
+    Story.deleteStories(); // Ensure expired stories are removed
+    ArrayList<Story> friendStories = getFriendStories(LoginScreen.activeUser.getUserId());
+    for (Story story : friendStories) {
+        storiesModel.addElement(story.getContent());
+    }
+    FriendsStoriesList.setModel(storiesModel);
+
+    }//GEN-LAST:event_refresh2ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -359,6 +435,7 @@ searchList.setModel(listModel2);
     private javax.swing.JScrollPane jScrollPane4;
     private javax.swing.JScrollPane jScrollPane5;
     private javax.swing.JScrollPane jScrollPane6;
+    private javax.swing.JButton refresh2;
     private javax.swing.JList<String> searchList;
     // End of variables declaration//GEN-END:variables
 }

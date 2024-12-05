@@ -110,5 +110,26 @@
         "userId": "alii",
         "content": "aaa",
         "timestamp": "05-12-2024 00:31"
+    },
+    {
+        "imagesrc": "C:\\Users\\Victus\\Downloads\\downloaded images\\report.png",
+        "postId": "post1334933073",
+        "userId": "ahmed",
+        "content": "test friends postsss",
+        "timestamp": "05-12-2024 17:11"
+    },
+    {
+        "imagesrc": "null",
+        "postId": "post1587032043",
+        "userId": "ahmed ali",
+        "content": "aa",
+        "timestamp": "05-12-2024 17:25"
+    },
+    {
+        "imagesrc": "C:\\Users\\Victus\\Downloads\\downloaded images\\lightbulb.png",
+        "postId": "post201506463",
+        "userId": "bodaalaa19",
+        "content": "bdbdbd",
+        "timestamp": "05-12-2024 17:28"
     }
 ]
