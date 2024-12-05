@@ -88,6 +88,7 @@ public class Story extends Content{
     
     
     public static ArrayList<Story> loadStoriesForUser(String userId){
+        deleteStories(); //deletes expired stories before showing user stories
         ArrayList<Story> allStories=loadStories(); //arraylist containing all stories
         ArrayList<Story> userStories=new ArrayList<>(); //empty arraylist for user stories
         for(int i=0;i<allStories.size();i++){
