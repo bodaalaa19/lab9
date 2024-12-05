@@ -1,14 +1,4 @@
-[
-    {
-        "receiver": "ahmed ali",
-        "sender": "best"
-    },
-    {
-        "receiver": "oo",
-        "sender": "best"
-    },
-    {
-        "receiver": "best",
-        "sender": "oo"
-    }
-]
+[{
+    "receiver": "oo",
+    "sender": "best"
+}]

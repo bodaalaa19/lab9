@@ -65,7 +65,7 @@
         "email": "alii"
     },
     {
-        "Status": "online",
+        "Status": "offline",
         "hashedPassword": "qMI8yBQXlXjjp3RBisX8RwKmbrO3jIdt+BspBGXm4zQ=",
         "profile": {
             "profilePhoto": "C:\\Users\\Victus\\Downloads\\user.png",
@@ -102,5 +102,44 @@
         "userName": "ahmed ali",
         "userId": "ahmed ali",
         "email": "ahmed ali"
+    },
+    {
+        "Status": "offline",
+        "hashedPassword": "n+Cc23ZZNcXEsJXSk6aI6cagtxhu+IgMWZul+end+SY=",
+        "profile": {
+            "profilePhoto": "ghvh",
+            "coverPhoto": "hhh",
+            "bio": "hfc"
+        },
+        "dateOfBirth": "2024-01-01",
+        "userName": "abdo",
+        "userId": "abdo",
+        "email": "abdo"
+    },
+    {
+        "Status": "offline",
+        "hashedPassword": "514b6L2JMUD1B5PbJsXmu9BKWk2oKa7atcbih9aQ1ps=",
+        "profile": {
+            "profilePhoto": "ghvh",
+            "coverPhoto": "hhh",
+            "bio": "hfc"
+        },
+        "dateOfBirth": "2024-01-01",
+        "userName": "abdo1",
+        "userId": "abdo1",
+        "email": "abdo1"
+    },
+    {
+        "Status": "offline",
+        "hashedPassword": "dHKMwAf92hafyMupBqIl3/bPgFd3ksTsq1PGl7fQgf8=",
+        "profile": {
+            "profilePhoto": "ghvh",
+            "coverPhoto": "hhh",
+            "bio": "hfc"
+        },
+        "dateOfBirth": "2024-02-04",
+        "userName": "abdo2",
+        "userId": "abdo2",
+        "email": "abdo2"
     }
 ]
