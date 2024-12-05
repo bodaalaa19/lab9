@@ -141,5 +141,18 @@
         "userName": "abdo2",
         "userId": "abdo2",
         "email": "abdo2"
+    },
+    {
+        "Status": "offline",
+        "hashedPassword": "kS7w/Z/OeGnVG2pd9UNckSlrMoPsv/Y/uzl4FiX9ic8=",
+        "profile": {
+            "profilePhoto": "C:\\Users\\Victus\\Downloads\\downloaded images\\duck.png",
+            "coverPhoto": "C:\\Users\\Victus\\Downloads\\downloaded images\\universe.png",
+            "bio": "Boda is here <3"
+        },
+        "dateOfBirth": "2003-12-11",
+        "userName": "bodaalaa19",
+        "userId": "bodaalaa19",
+        "email": "abdelrahmanalaa19@gmail.com"
     }
 ]
