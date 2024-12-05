@@ -4,6 +4,8 @@
  */
 package com.mycompany.lab99;
 
+import static com.mycompany.lab99.FriendContent.getFriendPosts;
+import static com.mycompany.lab99.FriendContent.getFriendStories;
 import static com.mycompany.lab99.FriendRequest.sendRequest;
 import static com.mycompany.lab99.Friends.search;
 import static com.mycompany.lab99.Friends.viewRequestSenders;
@@ -27,6 +29,21 @@ ArrayList<String> s=viewRequestSenders(LoginScreen.activeUser.getUserId());
             listModel.addElement(string);
         }
 FriendReqList.setModel(listModel);
+                        DefaultListModel<String> listModel2 = new DefaultListModel<>();
+                        ArrayList<Post> posts=getFriendPosts(LoginScreen.activeUser.getUserId());
+                       for (Post post : posts) {
+                           listModel2.addElement(post.getContent());
+            
+        }
+FriendsPostsList.setModel(listModel2);
+                        DefaultListModel<String> listModel3 = new DefaultListModel<>();
+                                            Story.deleteStories();
+
+                        ArrayList<Story> stories=getFriendStories(LoginScreen.activeUser.getUserId());
+        for (Story story : stories) {
+         listModel3.addElement(story.getContent());
+        }
+        FriendsStoriesList.setModel(listModel3);
     }
 
     /**
@@ -275,10 +292,20 @@ Friends.declineRequest(sss, LoginScreen.activeUser.getUserId());
 
     private void ViewPostBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ViewPostBtnActionPerformed
         // TODO add your handling code here:
+        ArrayList<Post> posts2=getFriendPosts(LoginScreen.activeUser.getUserId());
+        int index=FriendsPostsList.getSelectedIndex();
+        Post p=posts2.get(index);
+         ViewPost viewPost=new ViewPost(p);
+        viewPost.setVisible(true);
     }//GEN-LAST:event_ViewPostBtnActionPerformed
 
     private void ViewStoryBtn1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ViewStoryBtn1ActionPerformed
         // TODO add your handling code here:
+        ArrayList<Story> story2=getFriendStories(LoginScreen.activeUser.getUserId());
+        int index=FriendsStoriesList.getSelectedIndex();
+        Story s=story2.get(index);
+        ViewStory viewStory=new ViewStory(s);
+                    viewStory.setVisible(true);
     }//GEN-LAST:event_ViewStoryBtn1ActionPerformed
 
     private void AddFriendBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AddFriendBtnActionPerformed
