@@ -3,6 +3,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
 package com.mycompany.lab99;
+import static com.mycompany.lab99.Friends.removeFriendship;
 import static com.mycompany.lab99.Friends.viewFriends;
 import com.mycompany.lab99.User;
 import java.awt.Image;
@@ -155,6 +156,7 @@ myFriendsList.setModel(listModel3);
         myFriendsList = new javax.swing.JList<>();
         jLabel4 = new javax.swing.JLabel();
         NewsfeedBtn = new javax.swing.JButton();
+        RemoveFriendBtn = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -269,6 +271,14 @@ myFriendsList.setModel(listModel3);
             }
         });
 
+        RemoveFriendBtn.setBackground(new java.awt.Color(255, 102, 153));
+        RemoveFriendBtn.setText("Remove Friend");
+        RemoveFriendBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                RemoveFriendBtnActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -290,12 +300,14 @@ myFriendsList.setModel(listModel3);
                         .addComponent(editProfileButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(LogoutButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addComponent(NewsfeedBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 133, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(0, 130, Short.MAX_VALUE))
+                .addGap(0, 154, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(RemoveFriendBtn)
                         .addGap(0, 0, Short.MAX_VALUE))
                     .addComponent(jLabel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -363,7 +375,11 @@ myFriendsList.setModel(listModel3);
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 164, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 164, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                .addComponent(RemoveFriendBtn)
+                                .addGap(17, 17, 17)))))
                 .addGap(23, 23, 23))
         );
 
@@ -500,6 +516,13 @@ this.changepassword.setVisible(true);
         this.setVisible(false);
     }//GEN-LAST:event_NewsfeedBtnActionPerformed
 
+    private void RemoveFriendBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RemoveFriendBtnActionPerformed
+        // TODO add your handling code here:
+        String f=myFriendsList.getSelectedValue();
+        String f1=f.split(" ")[0];
+        removeFriendship(LoginScreen.activeUser.getUserId(),f1);
+    }//GEN-LAST:event_RemoveFriendBtnActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -539,6 +562,7 @@ this.changepassword.setVisible(true);
     private javax.swing.JButton AddMyStory;
     private javax.swing.JButton LogoutButton;
     private javax.swing.JButton NewsfeedBtn;
+    private javax.swing.JButton RemoveFriendBtn;
     private javax.swing.JLabel bio;
     private javax.swing.JLabel coverPhoto;
     private javax.swing.JButton editProfileButton;
