@@ -85,6 +85,9 @@ public static boolean sendRequest(String senderId, String receiverId) {
     if (!senderExists || !receiverExists || senderId.equals(receiverId)) {
         return false;
     }
+    if(BlockedFriends.isBlocked(receiverId,senderId)){
+        return false;
+    }
     for (JSONObject request : requests) {
         if (request.getString("sender").equals(senderId) && request.getString("receiver").equals(receiverId)) {
             return false;
