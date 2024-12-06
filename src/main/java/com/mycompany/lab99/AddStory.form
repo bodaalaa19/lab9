@@ -97,7 +97,7 @@
     </Component>
     <Component class="javax.swing.JButton" name="AddStoryBtn">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Add post"/>
+        <Property name="text" type="java.lang.String" value="Add story"/>
       </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="AddStoryBtnActionPerformed"/>
