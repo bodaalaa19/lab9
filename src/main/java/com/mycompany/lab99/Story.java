@@ -106,7 +106,7 @@ public class Story extends Content{
         ArrayList<Story> updated=new ArrayList<>(); //empty arraylist 
         for(Story s: stories){
             //checks if story time exceeds 24 hours
-            Duration duration=Duration.between(LocalDateTime.now(), s.getTimeStamp());
+            Duration duration=Duration.between(s.getTimeStamp(),LocalDateTime.now() );
             long hrs=duration.toHours();
             if(hrs<24){
                 //adds story in new array if its time doesnt exceed 34 hours

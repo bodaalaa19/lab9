@@ -338,7 +338,7 @@ Friends.declineRequest(sss, LoginScreen.activeUser.getUserId());
             break;}
         }
         sendRequest(LoginScreen.activeUser.getUserId(),l.getUserId() );
-           JOptionPane.showMessageDialog(this, "request sent", "request", JOptionPane.INFORMATION_MESSAGE);
+//           JOptionPane.showMessageDialog(this, "request sent", "request", JOptionPane.INFORMATION_MESSAGE);
 
     }//GEN-LAST:event_AddFriendBtnActionPerformed
 

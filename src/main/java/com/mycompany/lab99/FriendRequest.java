@@ -104,6 +104,7 @@ public static boolean sendRequest(String senderId, String receiverId) {
     // Add the new request and save to the file
     requests.add(newRequest);
     saveRequests(requests);
+           JOptionPane.showMessageDialog(null, "request sent", "request", JOptionPane.INFORMATION_MESSAGE);
 
     return true;
 }
