@@ -4,6 +4,8 @@
  */
 package com.mycompany.lab99;
 
+import static com.mycompany.lab99.BlockedFriends.blockFriend;
+import static com.mycompany.lab99.BlockedFriends.unblockFriend;
 import static com.mycompany.lab99.FriendContent.getFriendPosts;
 import static com.mycompany.lab99.FriendContent.getFriendStories;
 import static com.mycompany.lab99.FriendRequest.sendRequest;
@@ -88,6 +90,7 @@ FriendsPostsList.setModel(listModel2);
         SuggestList = new javax.swing.JList<>();
         jLabel4 = new javax.swing.JLabel();
         AddSuggest = new javax.swing.JButton();
+        UnblockBtn = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -199,6 +202,14 @@ FriendsPostsList.setModel(listModel2);
             }
         });
 
+        UnblockBtn.setBackground(new java.awt.Color(255, 204, 204));
+        UnblockBtn.setText("Unblock");
+        UnblockBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                UnblockBtnActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -237,7 +248,9 @@ FriendsPostsList.setModel(listModel2);
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(jScrollPane6, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(AddFriendBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(AddFriendBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(UnblockBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE)))
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(idText, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(18, 18, 18)
@@ -270,6 +283,8 @@ FriendsPostsList.setModel(listModel2);
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(UnblockBtn)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(AddFriendBtn)
                         .addGap(39, 39, 39))
                     .addGroup(layout.createSequentialGroup()
@@ -430,6 +445,13 @@ searchList.setModel(listModel2);
         sendRequest(LoginScreen.activeUser.getUserId(),s );
     }//GEN-LAST:event_AddSuggestActionPerformed
 
+    private void UnblockBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_UnblockBtnActionPerformed
+        // TODO add your handling code here:
+        String f=searchList.getSelectedValue();
+        unblockFriend(LoginScreen.activeUser.getUserId(),f);
+        JOptionPane.showMessageDialog(this, "Unblocked");
+    }//GEN-LAST:event_UnblockBtnActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -476,6 +498,7 @@ searchList.setModel(listModel2);
     private javax.swing.JList<String> FriendsStoriesList;
     private javax.swing.JButton SearchBtn;
     private javax.swing.JList<String> SuggestList;
+    private javax.swing.JButton UnblockBtn;
     private javax.swing.JButton ViewPostBtn;
     private javax.swing.JButton ViewStoryBtn1;
     private javax.swing.JTextField idText;

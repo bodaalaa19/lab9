@@ -3,6 +3,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
 package com.mycompany.lab99;
+import static com.mycompany.lab99.BlockedFriends.blockFriend;
 import static com.mycompany.lab99.Friends.removeFriendship;
 import static com.mycompany.lab99.Friends.viewFriends;
 import com.mycompany.lab99.Post;
@@ -160,6 +161,7 @@ myFriendsList.setModel(listModel3);
         NewsfeedBtn = new javax.swing.JButton();
         RemoveFriendBtn = new javax.swing.JButton();
         refresh = new javax.swing.JButton();
+        BlockFriendBtn = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -289,6 +291,14 @@ myFriendsList.setModel(listModel3);
             }
         });
 
+        BlockFriendBtn.setBackground(new java.awt.Color(255, 102, 153));
+        BlockFriendBtn.setText("Block Friend");
+        BlockFriendBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BlockFriendBtnActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -322,7 +332,9 @@ myFriendsList.setModel(listModel3);
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(RemoveFriendBtn)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(RemoveFriendBtn, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(BlockFriendBtn, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                         .addGap(0, 0, Short.MAX_VALUE))
                     .addComponent(jLabel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -395,6 +407,8 @@ myFriendsList.setModel(listModel3);
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 164, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                .addComponent(BlockFriendBtn)
+                                .addGap(19, 19, 19)
                                 .addComponent(RemoveFriendBtn)
                                 .addGap(17, 17, 17)))))
                 .addGap(23, 23, 23))
@@ -578,6 +592,14 @@ this.changepassword.setVisible(true);
   
     }//GEN-LAST:event_refreshActionPerformed
 
+    private void BlockFriendBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BlockFriendBtnActionPerformed
+        // TODO add your handling code here:
+        String f=myFriendsList.getSelectedValue();
+        String f1=f.split(" ")[0];
+        blockFriend(LoginScreen.activeUser.getUserId(),f1);
+        JOptionPane.showMessageDialog(this, "blocked");
+    }//GEN-LAST:event_BlockFriendBtnActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -615,6 +637,7 @@ this.changepassword.setVisible(true);
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton AddMyPostBtn;
     private javax.swing.JButton AddMyStory;
+    private javax.swing.JButton BlockFriendBtn;
     private javax.swing.JButton LogoutButton;
     private javax.swing.JButton NewsfeedBtn;
     private javax.swing.JButton RemoveFriendBtn;
