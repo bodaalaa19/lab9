@@ -6,5 +6,13 @@
     {
         "user1": "alii",
         "user2": "j"
+    },
+    {
+        "user1": "test1",
+        "user2": "test2"
+    },
+    {
+        "user1": "test2",
+        "user2": "test1"
     }
 ]
