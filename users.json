@@ -39,7 +39,7 @@
         "email": "abc"
     },
     {
-        "Status": "online",
+        "Status": "offline",
         "hashedPassword": "j0N17GXCxAkqHMIednEkcurg3pmThOgyfElZVxIducI=",
         "profile": {
             "profilePhoto": "C:\\Users\\Victus\\Downloads\\downloaded images\\armchair.png",
@@ -154,5 +154,31 @@
         "userName": "bodaalaa19",
         "userId": "bodaalaa19",
         "email": "abdelrahmanalaa19@gmail.com"
+    },
+    {
+        "Status": "offline",
+        "hashedPassword": "G08OmFGXGZjnMgeFRMlrNsPQHO33yqMyNZ1vHYNWcBQ=",
+        "profile": {
+            "profilePhoto": "C:\\Users\\Victus\\Downloads\\downloaded images\\duck.png",
+            "coverPhoto": "hhh",
+            "bio": "testttt1"
+        },
+        "dateOfBirth": "2024-01-01",
+        "userName": "test1",
+        "userId": "test1",
+        "email": "test1"
+    },
+    {
+        "Status": "offline",
+        "hashedPassword": "YDA64iuZiGG847KPM+7BvnWKITyGyTwHbb6fVYwRx1I=",
+        "profile": {
+            "profilePhoto": "C:\\Users\\Victus\\Downloads\\downloaded images\\universe.png",
+            "coverPhoto": "hhh",
+            "bio": "hfc"
+        },
+        "dateOfBirth": "2024-06-07",
+        "userName": "test2",
+        "userId": "test2",
+        "email": "test2"
     }
 ]

@@ -58,7 +58,7 @@ public class AddStory extends javax.swing.JFrame {
             }
         });
 
-        AddStoryBtn.setText("Add post");
+        AddStoryBtn.setText("Add story");
         AddStoryBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 AddStoryBtnActionPerformed(evt);
