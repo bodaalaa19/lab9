@@ -179,6 +179,26 @@ public static ArrayList<User> viewFriends(String userId) {
     }
     return friends; 
 }
+
+    //function to get friend suggestions
+public static ArrayList<User> suggestFriends(String userId){
+    ArrayList<User> users=User.loadUsers(); //arraylist of all users
+    ArrayList<User> userFriends=viewFriends(userId); // arraylist of user friends
+    
+    //for loop to remove user friends from users arraylist
+    for(int i=0;i<users.size();i++){
+        for(int j=0;j<userFriends.size();j++){
+            //user gets removed from users arraylist if his id is equal to userId or a friend id or is blocked
+            if(users.get(i).getUserId().equals(userFriends.get(j).getUserId()) || users.get(i).getUserId().equals(userId) || BlockedFriends.isBlocked(userId, users.get(i).getUserId())){
+                users.remove(i);
+                i--;
+               break; 
+            }
+        }
+    }
+    
+    return users;
+}
 }
 
 

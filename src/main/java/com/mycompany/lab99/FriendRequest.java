@@ -12,6 +12,7 @@ import java.util.ArrayList;
 import org.json.JSONArray;
 import org.json.JSONObject;
 import java.util.Scanner;
+import javax.swing.JOptionPane;
 
 public class FriendRequest {
 
@@ -83,6 +84,10 @@ public static boolean sendRequest(String senderId, String receiverId) {
         }
     }
     if (!senderExists || !receiverExists || senderId.equals(receiverId)) {
+        return false;
+    }
+    if(BlockedFriends.isBlocked(receiverId,senderId)){
+        JOptionPane.showMessageDialog(null, "Cannot add user");
         return false;
     }
     for (JSONObject request : requests) {
