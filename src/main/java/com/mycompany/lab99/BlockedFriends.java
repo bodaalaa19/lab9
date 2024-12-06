@@ -80,7 +80,7 @@ public class BlockedFriends {
         return blockedFriends; 
     }
     
-    public static void blockFriend(String userId,String blockedUserId){
+    public static boolean blockFriend(String userId,String blockedUserId){
         ArrayList<User> friends =Friends.viewFriends(userId);
         ArrayList<JSONObject> blockedList =loadBlockedFriends();
         boolean blockedFlag=false;
@@ -100,9 +100,10 @@ public class BlockedFriends {
         if(blockedFlag){
             saveBlockedFriends(blockedList);
         }
+        return blockedFlag;
     }
     
-    public static void unblockFriend(String userId,String blockedUserId){
+    public static boolean unblockFriend(String userId,String blockedUserId){
         ArrayList<JSONObject> blockedList=loadBlockedFriends();
         boolean unblocked=false;
         
@@ -121,6 +122,7 @@ public class BlockedFriends {
         if(unblocked){
             saveBlockedFriends(blockedList);
         }
+        return unblocked;
     }
     
     public static boolean isBlocked(String userId,String blockedUserId){
